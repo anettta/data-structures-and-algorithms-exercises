@@ -11,6 +11,10 @@
 // according to the previously mentioned pattern.
 
 // Two-pointer technique!
+// n = number of groups
+// m = max num found in any group
+// Time: O(n*m)
+// Space: O(n*m)
 
 const uncompress = (str) => {
   let numbers = "0123456789";
