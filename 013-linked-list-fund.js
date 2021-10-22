@@ -25,6 +25,7 @@ class Node {
 //
 const linkedListFund = (head, target) => {
   if (head === null) {
+    // empty list or end of linked list
     return false;
   }
   if (head.val === target) {
