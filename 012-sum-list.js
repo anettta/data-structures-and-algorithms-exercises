@@ -2,21 +2,30 @@
 // containing numbers as an arguments.
 // The function should return the total sum of all values in the linked list.
 
+// Time: O(n) iterations
+// Time: O(1)
 class Node {
   constructor(val) {
     this.val = val;
     this.next = null;
   }
 }
-
+// iterative
+// const sumList = (head) => {
+//   let current = head;
+//   let sum = 0;
+//   while (current !== null) {
+//     sum += current.val;
+//     current = current.next;
+//   }
+//   return sum;
+// };
+// recursive, also time is O(n) calls but space is O(n)
 const sumList = (head) => {
-  let current = head;
-  let sum = 0;
-  while (current !== null) {
-    sum += current.val;
-    current = current.next;
+  if (head === null) {
+    return 0;
   }
-  return sum;
+  return head.val + sumList(head.next);
 };
 
 const a = new Node(2);
