@@ -21,6 +21,7 @@ class Node {
 //     current = current.next;
 //     count++;
 //   }
+//  return null;
 // };
 //
 // recursive
