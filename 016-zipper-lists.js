@@ -33,10 +33,10 @@ class Node {
 //     tail = tail.next;
 //     count++;
 //   }
-//   if (current1 !== null) {
+//   if (current1 === null) {
 //     tail.next = current1;
 //   }
-//   if (current2 !== null) {
+//   if (current2 === null) {
 //     tail.next = current2;
 //   }
 //   return head1;
