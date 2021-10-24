@@ -16,10 +16,10 @@ class Node {
 }
 
 //
-// iterative
+// iterative  O(n) time and O(1) space
 //
 // let mergeLists = (head1, head2) => {
-//   //   let tail = head1;
+
 //   let current1 = head1;
 //   let current2 = head2;
 //   let dummyHead = new Node(null);
@@ -46,7 +46,7 @@ class Node {
 // };
 
 //
-// recursive
+// recursive O(n) time and O(n) space
 //
 let mergeLists = (head1, head2) => {
   if (head1 === null && head2 === null) {
