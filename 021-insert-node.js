@@ -17,7 +17,15 @@ class Node {
   }
 }
 
-const insertNode = (head, value, index) => {};
+const insertNode = (head, value, index) => {
+  let current = head;
+  let count = 0;
+  while (current !== null) {
+    let next = current.next;
+    current = current.next;
+  }
+  return head;
+};
 
 const a = new Node("a");
 const b = new Node("b");
