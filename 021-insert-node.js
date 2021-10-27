@@ -17,16 +17,46 @@ class Node {
   }
 }
 
-const insertNode = (head, value, index) => {
-  let current = head;
-  let count = 0;
-  while (current !== null) {
-    let next = current.next;
-    current = current.next;
+const insertNode = (head, value, index, count = 0) => {
+  if (head === null) return null;
+  if (index === 0) {
+    let newHead = new Node(value);
+    newHead.next = head;
+    return newHead;
   }
+  if (count === index - 1) {
+    let newNode = new Node(value);
+    let temp = head.next;
+    head.next = newNode;
+    head.next.next = temp;
+  }
+  insertNode(head.next, value, index, count + 1);
   return head;
 };
 
+//
+// iterative
+//
+// const insertNode = (head, value, index) => {
+//   if (index === 0) {
+//     let newHead = new Node(value);
+//     newHead.next = head;
+//     return newHead;
+//   }
+//   let current = head;
+//   let count = 0;
+//   while (current !== null) {
+//     if (count === index - 1) {
+//       let newNode = new Node(value);
+//       let temp = current.next;
+//       current.next = newNode;
+//       current.next.next = temp;
+//     }
+//     count++;
+//     current = current.next;
+//   }
+//   return head;
+// };
 const a = new Node("a");
 const b = new Node("b");
 const c = new Node("c");
@@ -36,4 +66,4 @@ a.next = b;
 b.next = c;
 c.next = d;
 
-console.log(insertNode(a, "x", 2));
+console.log(insertNode(a, "x", 1));
