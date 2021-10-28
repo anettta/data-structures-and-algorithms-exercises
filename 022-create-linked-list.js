@@ -11,12 +11,12 @@ class Node {
 //
 // recursive
 //
-const createLinkedList = (array) => {
-  if (array.length === 0) {
+const createLinkedList = (array, i = 0) => {
+  if (i === array.length) {
     return null;
   }
-  const head = new Node(array[0]);
-  head.next = createLinkedList(array.slice(1));
+  const head = new Node(array[i]);
+  head.next = createLinkedList(array, i + 1);
   return head;
 };
 //
