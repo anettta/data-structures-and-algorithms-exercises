@@ -17,20 +17,20 @@ class Node {
 //
 // iterative
 //
-// const breadthFirstValues = (root) => {
-//   // a, b, c, d, e, f
-//   if (root === null) return [];
-//   let queue = [root];
-//   let result = [];
-//   while (queue.length > 0) {
-//     let current = queue.shift();
-//     result.push(current.val);
+const breadthFirstValues = (root) => {
+  // a, b, c, d, e, f
+  if (root === null) return [];
+  let queue = [root];
+  let result = [];
+  while (queue.length > 0) {
+    let current = queue.shift();
+    result.push(current.val);
 
-//     if (current.left !== null) queue.push(current.left);
-//     if (current.right !== null) queue.push(current.right);
-//   }
-//   return result;
-// };
+    if (current.left !== null) queue.push(current.left);
+    if (current.right !== null) queue.push(current.right);
+  }
+  return result;
+};
 //
 //
 // NO RECURSIVE!!! BFS needs queue order!
