@@ -58,4 +58,10 @@ b.left = d;
 b.right = e;
 c.right = f;
 
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
+
 console.log(depthFirstValues(a));
