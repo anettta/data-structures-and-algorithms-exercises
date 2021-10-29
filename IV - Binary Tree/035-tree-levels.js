@@ -9,6 +9,26 @@ class Node {
     this.right = null;
   }
 }
+// ---------recursive start--------
+const treeLevels = (root) => {
+  const levels = [];
+  fillLevels(root, levels, 0);
+  return levels;
+};
+
+const fillLevels = (root, levels, levelNum) => {
+  if (root === null) return;
+
+  if (levels.length === levelNum) {
+    levels.push([root.val]); // for root node
+  } else {
+    levels[levelNum].push(root.val); // indexing into existing subarray
+  }
+  fillLevels(root.left, levels, levelNum + 1);
+  fillLevels(root.right, levels, levelNum + 1);
+};
+// -------recursive finish---------
+
 // BFS - queue - shift()
 const treeLevels = (root) => {
   if (root === null) return [];
