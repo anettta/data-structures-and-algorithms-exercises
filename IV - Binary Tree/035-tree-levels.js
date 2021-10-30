@@ -51,6 +51,7 @@ const treeLevels = (root) => {
     if (node.right !== null)
       queue.push({ node: node.right, levelNum: levelNum + 1 });
   }
+
   return levels;
 };
 
