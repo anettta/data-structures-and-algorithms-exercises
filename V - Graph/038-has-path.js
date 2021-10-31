@@ -3,9 +3,9 @@
 // and two nodes (src, dst).
 // The function should return a boolean
 // indicating whether or not there exists a directed path
-//  between the source and destination nodes.
+// between the source and destination nodes.
 
-// Iterative DFS
+// Iterative - DFS
 const hasPath = (graph, src, dst) => {
   let stack = [src];
   while (stack.length > 0) {
@@ -20,7 +20,7 @@ const hasPath = (graph, src, dst) => {
   return false;
 };
 
-// Recursive DFS
+// Recursive - DFS
 const hasPath = (graph, src, dst) => {
   if (src === dst) return true;
   for (let neighbor of graph[src]) {
