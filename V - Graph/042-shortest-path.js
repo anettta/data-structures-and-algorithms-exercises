@@ -7,6 +7,23 @@
 // not the number of nodes.
 // If there is no path between A and B, then return -1.
 
+const shortestPath = (edges, nodeA, nodeB) => {
+  const graph = buildGraph(edges);
+  // bfs
+};
+
+const buildGraph = (edges) => {
+  let graph = {};
+  for (let edge of edges) {
+    let [a, b] = edge;
+    if (!(a in graph)) graph[a] = [];
+    if (!(b in graph)) graph[b] = [];
+    graph[a].push(b);
+    graph[b].push(a);
+  }
+  return graph;
+};
+
 const edges = [
   ["w", "x"],
   ["x", "y"],
