@@ -1,5 +1,5 @@
 // Write a function, shortestPath,
-//  that takes in an array of edges
+// that takes in an array of edges
 // for an undirected graph and two nodes (nodeA, nodeB).
 // The function should return the length
 // of the shortest path between A and B.
@@ -9,7 +9,7 @@
 
 const shortestPath = (edges, nodeA, nodeB) => {
   const graph = buildGraph(edges);
-  // bfs
+  // breadth first traversal is better
 };
 
 const buildGraph = (edges) => {
