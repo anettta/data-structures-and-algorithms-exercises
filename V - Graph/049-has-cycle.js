@@ -2,6 +2,10 @@
 // representing the adjacency list of a directed graph.
 // The function should return a boolean indicating whether or not
 // the graph contains a cycle.
+//
+// n = number of nodes
+// Time: O(n^2)
+// Space: O(n)
 
 const hasCycle = (graph) => {
   const visited = new Set();
