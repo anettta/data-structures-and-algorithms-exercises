@@ -9,7 +9,10 @@
 // The minimum squares required for 12 is three, by doing 4 + 4 + 4.
 
 // Another way to make 12 is 9 + 1 + 1 + 1, but that requires four perfect squares.
-
+//
+// Time: O(n * sqrt(n))
+// Space: O(n)
+//
 const summingSquares = (n, memo = {}) => {
   if (n in memo) return memo[n];
   if (n === 0) return 0;
