@@ -10,6 +10,7 @@
 //
 // You can assume that the input number is a positive integer.
 
+// 12-16-21
 const isPrime = (num) => {
   if (num < 2) return false;
   for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -19,6 +20,16 @@ const isPrime = (num) => {
   }
   return true;
 };
+
+// const isPrime = (num) => {
+//   if (num < 2) return false;
+//   for (let i = 2; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
 
 console.log(isPrime(2)); // true
 console.log(isPrime(6)); // false
