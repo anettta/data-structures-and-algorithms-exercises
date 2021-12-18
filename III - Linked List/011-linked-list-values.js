@@ -11,14 +11,26 @@ class Node {
   }
 }
 // 12-18-21
+// const linkedListValues = (head) => {
+//   let arr = [];
+//   let current = head;
+//   while (current) {
+//     arr.push(current.val);
+//     current = current.next;
+//   }
+//   return arr;
+// };
+
 const linkedListValues = (head) => {
-  let arr = [];
-  let current = head;
-  while (current) {
-    arr.push(current.val);
-    current = current.next;
-  }
-  return arr;
+  let values = [];
+  fillValues(head, values);
+  return values;
+};
+
+const fillValues = (head, values) => {
+  if (head === null) return null;
+  values.push(head.val);
+  return fillValues(head.next, values);
 };
 
 // const linkedListValues = (head) => {
