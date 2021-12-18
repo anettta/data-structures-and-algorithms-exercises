@@ -5,21 +5,50 @@
 // You may assume that each input array does not contain duplicate elements.
 // Time O(n+m)
 // Space O(n)
+
+// 12-18-21
+
+// const intersection = (a, b) => {
+//   let newArr = [];
+//   for (let i = 0; i < a.length; i++) {
+//     if (b.includes(a[i])) {
+//       newArr.push(a[i]);
+//     }
+//   }
+//   return newArr;
+// };
+
 const intersection = (a, b) => {
   let newArr = [];
   let set = new Set();
 
-  for (let i = 0; i < a.length; i++) {
-    set.add(a[i]);
-  }
   for (let i = 0; i < b.length; i++) {
-    if (set.has(b[i])) {
-      newArr.push(b[i]);
+    set.add(b[i]);
+  }
+  for (let i = 0; i < a.length; i++) {
+    if (set.has(a[i])) {
+      newArr.push(a[i]);
     }
   }
 
   return newArr;
 };
+
+// const intersection = (a, b) => {
+//   let newArr = [];
+//   let set = new Set();
+
+//   for (let i = 0; i < a.length; i++) {
+//     set.add(a[i]);
+//   }
+//   for (let i = 0; i < b.length; i++) {
+//     if (set.has(b[i])) {
+//       newArr.push(b[i]);
+//     }
+//   }
+
+//   return newArr;
+// };
 console.log(intersection([4, 2, 1, 6], [3, 6, 9, 2, 10])); // [2,6]
 
 // brute force O(n*m)
