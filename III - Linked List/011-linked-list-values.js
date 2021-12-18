@@ -10,29 +10,39 @@ class Node {
     this.next = null;
   }
 }
-
+// 12-18-21
 const linkedListValues = (head) => {
-  // iterative
-  //   let values = [];
-  //   let current = head;
-  //   while (current !== null) {
-  //     values.push(current.val);
-  //     current = current.next;
-  //   }
-  //   return values;
-  //recursive
-  let values = [];
-  fillValues(head, values);
-  return values;
+  let arr = [];
+  let current = head;
+  while (current) {
+    arr.push(current.val);
+    current = current.next;
+  }
+  return arr;
 };
 
-const fillValues = (head, values) => {
-  if (head === null) {
-    return;
-  }
-  values.push(head.val);
-  fillValues(head.next, values);
-};
+// const linkedListValues = (head) => {
+//   // iterative
+//   //   let values = [];
+//   //   let current = head;
+//   //   while (current !== null) {
+//   //     values.push(current.val);
+//   //     current = current.next;
+//   //   }
+//   //   return values;
+//   //recursive
+//   let values = [];
+//   fillValues(head, values);
+//   return values;
+// };
+
+// const fillValues = (head, values) => {
+//   if (head === null) {
+//     return;
+//   }
+//   values.push(head.val);
+//   fillValues(head.next, values);
+// };
 
 const a = new Node("a");
 const b = new Node("b");
