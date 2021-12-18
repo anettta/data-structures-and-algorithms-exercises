@@ -10,6 +10,26 @@ class Node {
     this.next = null;
   }
 }
+
+// 12-18-21
+
+// const sumList = (head) => {
+//   let sum = 0;
+//   let current = head;
+//   while (current) {
+//     sum += current.val;
+//     current = current.next;
+//   }
+//   return sum;
+// };
+
+// recursive
+
+const sumList = (head) => {
+  if (head === null) return null;
+  return head.val + sumList(head.next);
+};
+
 // iterative
 // const sumList = (head) => {
 //   let current = head;
@@ -21,12 +41,12 @@ class Node {
 //   return sum;
 // };
 // recursive, also time is O(n) calls but space is O(n)
-const sumList = (head) => {
-  if (head === null) {
-    return 0;
-  }
-  return head.val + sumList(head.next);
-};
+// const sumList = (head) => {
+//   if (head === null) {
+//     return 0;
+//   }
+//   return head.val + sumList(head.next);
+// };
 
 const a = new Node(2);
 const b = new Node(8);
