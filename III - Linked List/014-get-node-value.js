@@ -9,6 +9,27 @@ class Node {
     this.next = null;
   }
 }
+// 12-20-21
+
+const getNodeValue = (head, idx) => {
+  let current = head;
+  let count = 0;
+  while (current) {
+    if (count === idx) {
+      return current.val;
+    }
+    current = current.next;
+    count++;
+  }
+  return null;
+};
+
+// const getNodeValue = (head, idx) => {
+//   if (head === null) return null;
+//   if (idx === 0) return head.val;
+//   return getNodeValue(head.next, idx - 1);
+// };
+
 // iterative
 //
 // const getNodeValue = (head, index) => {
@@ -26,15 +47,15 @@ class Node {
 //
 // recursive
 //
-const getNodeValue = (head, index) => {
-  if (head === null) {
-    return null;
-  }
-  if (index === 0) {
-    return head.val;
-  }
-  return getNodeValue(head.next, index - 1);
-};
+// const getNodeValue = (head, index) => {
+//   if (head === null) {
+//     return null;
+//   }
+//   if (index === 0) {
+//     return head.val;
+//   }
+//   return getNodeValue(head.next, index - 1);
+// };
 
 const a = new Node("a");
 const b = new Node("b");
