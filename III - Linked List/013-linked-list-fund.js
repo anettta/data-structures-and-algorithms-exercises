@@ -8,6 +8,25 @@ class Node {
     this.next = null;
   }
 }
+
+// 12-20-21
+
+// const linkedListFund = (head, target) => {
+//   let current = head;
+//   while (current) {
+//     if (current.val === target) {
+//       return true;
+//     }
+//     current = current.next;
+//   }
+//   return false;
+// };
+const linkedListFund = (head, target) => {
+  if (head === null) return false;
+  if (head.val === target) return true;
+  return linkedListFund(head.next, target);
+};
+
 //                           iterative
 //
 // const linkedListFund = (head, target) => {
@@ -23,16 +42,16 @@ class Node {
 //
 //                          recursive
 //
-const linkedListFund = (head, target) => {
-  if (head === null) {
-    // empty list or end of linked list
-    return false;
-  }
-  if (head.val === target) {
-    return true;
-  }
-  return linkedListFund(head.next, target);
-};
+// const linkedListFund = (head, target) => {
+//   if (head === null) {
+//     // empty list or end of linked list
+//     return false;
+//   }
+//   if (head.val === target) {
+//     return true;
+//   }
+//   return linkedListFund(head.next, target);
+// };
 
 const a = new Node("a");
 const b = new Node("b");
