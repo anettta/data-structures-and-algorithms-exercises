@@ -15,6 +15,32 @@ class Node {
   }
 }
 
+const mergeLists = (head1, head2) => {
+  let current1 = head1;
+  let dummyHead = new Node(null);
+  let tail = dummyHead;
+  let current2 = head2;
+  while (current1 && current2) {
+    if (current1.val < current2.val) {
+      tail.next = current1;
+      current1 = current1.next;
+    } else {
+      tail.next = current2;
+      current2 = current2.next;
+    }
+    tail = tail.next;
+  }
+
+  if (current1 === null) {
+    tail.next = current2;
+  }
+  if (current2 === null) {
+    tail.next = current1;
+  }
+
+  return dummyHead.next;
+};
+
 //
 // iterative  O(n) time and O(1) space
 //
@@ -48,27 +74,27 @@ class Node {
 //
 // recursive O(n) time and O(n) space
 //
-let mergeLists = (head1, head2) => {
-  if (head1 === null && head2 === null) {
-    return null;
-  }
+// let mergeLists = (head1, head2) => {
+//   if (head1 === null && head2 === null) {
+//     return null;
+//   }
 
-  if (head1 === null) {
-    return head2;
-  }
-  if (head2 === null) {
-    return head1;
-  }
-  if (head1.val < head2.val) {
-    const next1 = head1.next;
-    head1.next = mergeLists(next1, head2);
-    return head1;
-  } else {
-    const next2 = head2.next;
-    head2.next = mergeLists(head1, next2);
-    return head2;
-  }
-};
+//   if (head1 === null) {
+//     return head2;
+//   }
+//   if (head2 === null) {
+//     return head1;
+//   }
+//   if (head1.val < head2.val) {
+//     const next1 = head1.next;
+//     head1.next = mergeLists(next1, head2);
+//     return head1;
+//   } else {
+//     const next2 = head2.next;
+//     head2.next = mergeLists(head1, next2);
+//     return head2;
+//   }
+// };
 
 const a = new Node(5);
 const b = new Node(7);
