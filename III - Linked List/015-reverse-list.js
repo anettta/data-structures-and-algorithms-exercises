@@ -9,6 +9,20 @@ class Node {
   }
 }
 
+// 12-24-21
+
+const reverseList = (head) => {
+  let prev = null;
+  let current = head;
+  while (current) {
+    let next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  return prev;
+};
+
 // 12-20-21
 
 // const reverseList = (head) => {
@@ -26,13 +40,13 @@ class Node {
 //   return prev;
 // };
 
-const reverseList = (head, prev = null) => {
-  if (head === null) return null;
-  let next = head.next;
-  head.next = prev;
+// const reverseList = (head, prev = null) => {
+//   if (head === null) return null;
+//   let next = head.next;
+//   head.next = prev;
 
-  return reverseList(next, head);
-};
+//   return reverseList(next, head);
+// };
 
 //
 // iterative
