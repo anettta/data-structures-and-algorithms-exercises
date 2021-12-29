@@ -9,7 +9,8 @@ class Node {
     this.next = null;
   }
 }
-// 12-20-21
+
+// 12-28-21
 
 const getNodeValue = (head, idx) => {
   let current = head;
@@ -23,6 +24,21 @@ const getNodeValue = (head, idx) => {
   }
   return null;
 };
+
+// 12-20-21
+
+// const getNodeValue = (head, idx) => {
+//   let current = head;
+//   let count = 0;
+//   while (current) {
+//     if (count === idx) {
+//       return current.val;
+//     }
+//     current = current.next;
+//     count++;
+//   }
+//   return null;
+// };
 
 // const getNodeValue = (head, idx) => {
 //   if (head === null) return null;
