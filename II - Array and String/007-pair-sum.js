@@ -9,22 +9,36 @@
 // Time: O(n)
 // Space: O(n)
 
-// 12-17-21
+// 01/03/21
 
 const pairSum = (arr, target) => {
   let map = {};
-
   for (let i = 0; i < arr.length; i++) {
-    let elem = arr[i];
-    // map = [elem, i];
-    let complement = target - elem;
+    let complement = target - arr[i];
     if (complement in map) {
       return [map[complement], i];
     }
 
-    map[elem] = i;
+    map[arr[i]] = i;
   }
 };
+
+// 12-17-21
+
+// const pairSum = (arr, target) => {
+//   let map = {};
+
+//   for (let i = 0; i < arr.length; i++) {
+//     let elem = arr[i];
+//     // map = [elem, i];
+//     let complement = target - elem;
+//     if (complement in map) {
+//       return [map[complement], i];
+//     }
+
+//     map[elem] = i;
+//   }
+// };
 
 // const pairSum = (arr, target) => {
 //   // brute force Time: O(n^2) and Space: O(1)
