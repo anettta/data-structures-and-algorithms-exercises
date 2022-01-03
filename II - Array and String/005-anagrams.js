@@ -15,14 +15,24 @@ const anagrams = (str1, str2) => {
   let map = {};
   for (let i = 0; i < str1.length; i++) {
     let char = str1[i];
-    map[char] = true;
+    if (!map[char]) {
+      map[char] = 0;
+    }
+    map[char] += 1;
   }
   for (let i = 0; i < str2.length; i++) {
     let char = str2[i];
-    if (!map[char]) {
+    if (map[char]) {
+      map[char] -= 1;
+    } else {
       return false;
     }
   }
+
+  for (let i = 0; i < map.length; i++) {
+    if (map[char] !== 0) return false;
+  }
+
   return true;
 };
 
@@ -88,5 +98,5 @@ const anagrams = (str1, str2) => {
 //   return true;
 // };
 
-console.log(anagrams("restful", "flluster")); // true
-console.log(anagrams("cats", "tacs")); // false
+console.log(anagrams("restfulll", "flluster")); // false
+console.log(anagrams("catss", "tacss")); // true

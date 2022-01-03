@@ -6,27 +6,51 @@
 // Time: O(n)
 // Space: O(n)
 
-// 12-17-21
+// 01/03/21
 
 const mostFrequentChar = (str) => {
-  let mostFrequent = null;
   let count = {};
+  let freq = 0;
+  let most_frequent = str[0];
   for (let i = 0; i < str.length; i++) {
     let char = str[i];
-    // catts
     if (!count[char]) {
-      count[char] = 1;
-    } else {
-      count[char] = count[char] + 1;
+      count[char] = 0;
+    }
+    count[char] += 1;
+  }
+
+  for (num in count) {
+    if (count[num] > freq) {
+      freq = count[num];
+      most_frequent = num;
     }
   }
-  for (let elem of str) {
-    if (mostFrequent === null || count[elem] > count[mostFrequent]) {
-      mostFrequent = elem;
-    }
-  }
-  return mostFrequent;
+
+  return most_frequent;
 };
+
+// 12-17-21
+
+// const mostFrequentChar = (str) => {
+//   let mostFrequent = null;
+//   let count = {};
+//   for (let i = 0; i < str.length; i++) {
+//     let char = str[i];
+//     // catts
+//     if (!count[char]) {
+//       count[char] = 1;
+//     } else {
+//       count[char] = count[char] + 1;
+//     }
+//   }
+//   for (let elem of str) {
+//     if (mostFrequent === null || count[elem] > count[mostFrequent]) {
+//       mostFrequent = elem;
+//     }
+//   }
+//   return mostFrequent;
+// };
 // const mostFrequentChar = (str) => {
 //   let count = {};
 //   for (let letter of str) {
@@ -46,4 +70,4 @@ const mostFrequentChar = (str) => {
 //   return mostFrequent;
 // };
 
-console.log(mostFrequentChar("bookeeper")); // 'e'
+console.log(mostFrequentChar("bookeepppppper")); // 'p'
