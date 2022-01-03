@@ -7,19 +7,33 @@
 // Be sure to return the indices, not the elements themselves.
 // There is guaranteed to be one such pair whose product is the target.
 
-// 12-17-21
+// 01/03/21
 
 const pairProduct = (arr, target) => {
   let map = {};
   for (let i = 0; i < arr.length; i++) {
     let num = arr[i];
     let complement = target / num;
-    if (complement in map) {
+    if (map[complement]) {
       return [map[complement], i];
     }
     map[num] = i;
   }
 };
+
+// 12-17-21
+
+// const pairProduct = (arr, target) => {
+//   let map = {};
+//   for (let i = 0; i < arr.length; i++) {
+//     let num = arr[i];
+//     let complement = target / num;
+//     if (complement in map) {
+//       return [map[complement], i];
+//     }
+//     map[num] = i;
+//   }
+// };
 
 // const pairProduct = (arr, target) => {
 //   let map = {};
