@@ -8,6 +8,24 @@
 // n = s1 length
 // m = s2 length
 
+// 01/03/21
+
+const anagrams = (str1, str2) => {
+  if (str1.length !== str2.length) return false;
+  let map = {};
+  for (let i = 0; i < str1.length; i++) {
+    let char = str1[i];
+    map[char] = true;
+  }
+  for (let i = 0; i < str2.length; i++) {
+    let char = str2[i];
+    if (!map[char]) {
+      return false;
+    }
+  }
+  return true;
+};
+
 // 12-17-21
 
 // const anagrams = (str1, str2) => {
@@ -22,23 +40,23 @@
 //   return true;
 // };
 
-const anagrams = (str1, str2) => {
-  if (str1.length !== str2.length) return false;
-  // cats // tacs // true
-  let map = {};
-  for (let i = 0; i < str1.length; i++) {
-    let str1Elem = str1[i];
-    map[str1Elem] = true;
-  }
+// const anagrams = (str1, str2) => {
+//   if (str1.length !== str2.length) return false;
+//   // cats // tacs // true
+//   let map = {};
+//   for (let i = 0; i < str1.length; i++) {
+//     let str1Elem = str1[i];
+//     map[str1Elem] = true;
+//   }
 
-  for (let i = 0; i < str2.length; i++) {
-    let str2Elem = str2[i];
-    if (!map[str2Elem]) {
-      return false;
-    }
-  }
-  return true;
-};
+//   for (let i = 0; i < str2.length; i++) {
+//     let str2Elem = str2[i];
+//     if (!map[str2Elem]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
 
 // const anagrams = (s1, s2) => {
 //   // if (s1.length !== s2.length) return false;
@@ -70,5 +88,5 @@ const anagrams = (str1, str2) => {
 //   return true;
 // };
 
-console.log(anagrams("restfull", "flluster")); // true
-console.log(anagrams("cats", "tocs")); // false
+console.log(anagrams("restful", "flluster")); // true
+console.log(anagrams("cats", "tacs")); // false
