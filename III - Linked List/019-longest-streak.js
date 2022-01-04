@@ -12,24 +12,30 @@ class Node {
 
 const longestStreak = (head) => {
   let max = 0;
-  let current_streak = 0;
-  let prev = null;
   let current = head;
-
-  while (current !== null) {
-    if (current.val === prev) {
-      current_streak++;
-    } else {
-      current_streak = 1;
-    }
-    if (current_streak > max) {
-      max = current_streak;
-    }
-    prev = current.val;
-    current = current.next;
-  }
-  return max;
+  while (current) {}
 };
+
+// const longestStreak = (head) => {
+//   let max = 0;
+//   let current_streak = 0;
+//   let prev = null;
+//   let current = head;
+
+//   while (current !== null) {
+//     if (current.val === prev) {
+//       current_streak++;
+//     } else {
+//       current_streak = 1;
+//     }
+//     if (current_streak > max) {
+//       max = current_streak;
+//     }
+//     prev = current.val;
+//     current = current.next;
+//   }
+//   return max;
+// };
 
 const a = new Node(5);
 const b = new Node(5);

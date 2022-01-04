@@ -12,6 +12,18 @@ class Node {
   }
 }
 
+// const isUnivalueList = (head) => {
+//   let current = head;
+
+//   while (current !== null) {
+//     if (current.val !== head.val) {
+//       return false;
+//     }
+//     current = current.next;
+//   }
+//   return true;
+// };
+
 //
 // iterative
 //
@@ -38,9 +50,9 @@ const isUnivalueList = (head, prevVal = null) => {
   return isUnivalueList(head.next, head.val);
 };
 
-const a = new Node(7);
-const b = new Node(8);
-const c = new Node(7);
+const a = new Node(1);
+const b = new Node(9);
+const c = new Node(1);
 
 a.next = b;
 b.next = c;
