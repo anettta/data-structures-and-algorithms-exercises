@@ -9,29 +9,47 @@ class Node {
     this.right = null;
   }
 }
-// BFS - iterative
+
+// const treeSum = (root) => {
+//   let sum = 0;
+//   let queue = [root];
+//   while (queue.length > 0) {
+//     let current = queue.shift();
+//     sum += current.val;
+//     if (current.left) queue.push(current.left);
+//     if (current.right) queue.push(current.right);
+//   }
+//   return sum;
+// };
+
 const treeSum = (root) => {
   if (root === null) return 0;
-  let queue = [root];
-  let sum = 0;
-  while (queue.length > 0) {
-    let current = queue.shift();
-    sum += current.val;
-    if (current.left) queue.push(current.left);
-    if (current.right) queue.push(current.right);
-  }
-
-  return sum;
+  return root.val + treeSum(root.left) + treeSum(root.right);
 };
+
+// BFS - iterative
+// const treeSum = (root) => {
+//   if (root === null) return 0;
+//   let queue = [root];
+//   let sum = 0;
+//   while (queue.length > 0) {
+//     let current = queue.shift();
+//     sum += current.val;
+//     if (current.left) queue.push(current.left);
+//     if (current.right) queue.push(current.right);
+//   }
+
+//   return sum;
+// };
 
 // DFS - recursive
-const treeSum = (root) => {
-  if (root === null) return 0;
-  let sum = root.val;
-  sum += treeSum(root.left) + treeSum(root.right);
+// const treeSum = (root) => {
+//   if (root === null) return 0;
+//   let sum = root.val;
+//   sum += treeSum(root.left) + treeSum(root.right);
 
-  return sum;
-};
+//   return sum;
+// };
 
 const a = new Node(3);
 const b = new Node(11);
