@@ -12,26 +12,37 @@ class Node {
     this.right = null;
   }
 }
+
+const maxPathSum = (root) => {
+  if (root === null) return -Infinity;
+  if (root.left === null && root.right === null) return root.val;
+  let maxChild = Math.max(maxPathSum(root.left), maxPathSum(root.right));
+
+  return root.val + maxChild;
+};
+
 // Time: O(n)
 // Space: O(n)
 // iterative DFS
-const maxPathSum = (root) => {
-  if (root === null) return -Infinity;
-  let max = -Infinity;
-  let stack = [root];
-  let sum = 0;
-  while (stack.length > 0) {
-    let current = stack.pop();
-    sum += current.val;
+// const maxPathSum = (root) => {
+//   if (root === null) return -Infinity;
+//   let max = -Infinity;
+//   let stack = [root];
 
-    if (current.left) stack.push(current.left);
-    if (current.right) stack.push(current.right);
-  }
-  if (sum > max) {
-    max = sum;
-  }
-  return max; // 21 wrong answer
-};
+//   while (stack.length > 0) {
+//     let current = stack.pop();
+//     if (current > max) {
+//       max = current.val;
+//     }
+//     if (current.left > current.right) {
+//       stack.push(current.left);
+//     } else {
+//       stack.push(current.right);
+//     }
+//   }
+//   console.log(max);
+//   return max; // error
+// };
 // recursive DFS
 //
 // const maxPathSum = (root) => {
