@@ -14,6 +14,24 @@ class Node {
 
 // const isUnivalueList = (head) => {
 //   let current = head;
+//   while (current !== null) {
+//     if (current.val !== head.val) {
+//       return false;
+//     }
+//     current = current.next;
+//   }
+//   return true;
+// };
+
+const isUnivalueList = (head, prev = null) => {
+  if (head === null) return true;
+  if (head.val !== prev && prev !== null) return false;
+
+  return isUnivalueList(head.next, head.val);
+};
+
+// const isUnivalueList = (head) => {
+//   let current = head;
 
 //   while (current !== null) {
 //     if (current.val !== head.val) {
@@ -40,15 +58,15 @@ class Node {
 //
 // recursive
 //
-const isUnivalueList = (head, prevVal = null) => {
-  if (head === null) {
-    return true;
-  }
-  if (prevVal !== null && head.val !== prevVal) {
-    return false;
-  }
-  return isUnivalueList(head.next, head.val);
-};
+// const isUnivalueList = (head, prevVal = null) => {
+//   if (head === null) {
+//     return true;
+//   }
+//   if (prevVal !== null && head.val !== prevVal) {
+//     return false;
+//   }
+//   return isUnivalueList(head.next, head.val);
+// };
 
 const a = new Node(1);
 const b = new Node(9);

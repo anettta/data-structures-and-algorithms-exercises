@@ -10,12 +10,6 @@ class Node {
   }
 }
 
-const longestStreak = (head) => {
-  let max = 0;
-  let current = head;
-  while (current) {}
-};
-
 // const longestStreak = (head) => {
 //   let max = 0;
 //   let current_streak = 0;
