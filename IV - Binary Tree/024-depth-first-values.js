@@ -13,7 +13,9 @@ class Node {
 }
 
 // 01-05-22
-
+//
+// iterative
+//
 // const depthFirstValues = (root) => {
 //   if (root === null) return [];
 //   let stack = [root];
@@ -22,21 +24,19 @@ class Node {
 //     let current = stack.pop();
 //     values.push(current.val);
 
-//     if (current.right) {
-//       stack.push(current.right);
-//     }
-//     if (current.left) {
-//       stack.push(current.left);
-//     }
+//     if (current.right) stack.push(current.right);
+//     if (current.left) stack.push(current.left);
 //   }
-
 //   return values;
 // };
-
+//
+//
+// recursive
+//
 const depthFirstValues = (root) => {
   if (root === null) return [];
-  const leftValues = depthFirstValues(root.left);
-  const rightValues = depthFirstValues(root.right);
+  let leftValues = depthFirstValues(root.left);
+  let rightValues = depthFirstValues(root.right);
   return [root.val, ...leftValues, ...rightValues];
 };
 
