@@ -11,26 +11,39 @@ class Node {
   }
 }
 
+const breadthFirstValues = (root) => {
+  if (root === null) return [];
+  let values = [];
+  let queue = [root];
+  while (queue.length > 0) {
+    let current = queue.shift();
+    values.push(current.val);
+    if (current.left) queue.push(current.left);
+    if (current.right) queue.push(current.right);
+  }
+  return values;
+};
+
 // Time: O(n)
 // Space: O(n)
 //
 //
 // iterative
 //
-const breadthFirstValues = (root) => {
-  // a, b, c, d, e, f
-  if (root === null) return [];
-  let queue = [root];
-  let result = [];
-  while (queue.length > 0) {
-    let current = queue.shift();
-    result.push(current.val);
+// const breadthFirstValues = (root) => {
+//   // a, b, c, d, e, f
+//   if (root === null) return [];
+//   let queue = [root];
+//   let result = [];
+//   while (queue.length > 0) {
+//     let current = queue.shift();
+//     result.push(current.val);
 
-    if (current.left !== null) queue.push(current.left);
-    if (current.right !== null) queue.push(current.right);
-  }
-  return result;
-};
+//     if (current.left !== null) queue.push(current.left);
+//     if (current.right !== null) queue.push(current.right);
+//   }
+//   return result;
+// };
 //
 //
 // NO RECURSIVE!!! BFS needs queue order!
