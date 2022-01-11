@@ -1,28 +1,16 @@
 // Write a function, hasPath, that takes in an object
 // representing the adjacency list of a directed acyclic graph
-// and two nodes (src, dst).
+// and two nodes (graph, src, dst).
 // The function should return a boolean
 // indicating whether or not there exists a directed path
 // between the source and destination nodes.
-
-// Iterative - DFS
-const hasPath = (graph, src, dst) => {
-  let stack = [src];
-  while (stack.length > 0) {
-    let current = stack.pop();
-    if (current === dst) {
-      return true;
-    }
-    for (let neighbor of graph[current]) {
-      stack.push(neighbor);
-    }
-  }
-  return false;
-};
-
-// Recursive - DFS
+//
+//
+// 01-11-21 DFS Recursive
+//
 const hasPath = (graph, src, dst) => {
   if (src === dst) return true;
+
   for (let neighbor of graph[src]) {
     if (hasPath(graph, neighbor, dst) === true) {
       return true;
@@ -30,6 +18,72 @@ const hasPath = (graph, src, dst) => {
   }
   return false;
 };
+
+//
+// 01-11-21 BFS iterative
+//
+// const hasPath = (graph, src, dst) => {
+//   let queue = [src];
+//   while (queue.length > 0) {
+//     let current = queue.shift();
+//     if (current === dst) {
+//       return true;
+//     }
+//     for (let neighbor of graph[current]) {
+//       queue.push(neighbor);
+//       if (neighbor === dst) {
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// };
+//
+//
+// 01-11-21 DFS iterative
+//
+// const hasPath = (graph, src, dst) => {
+//   if (src === dst) return true;
+//   const stack = [src];
+//   while (stack.length > 0) {
+//     let current = stack.pop();
+//     for (let neighbor of graph[current]) {
+//       stack.push(neighbor);
+//       if (neighbor === dst) {
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// };
+//
+//
+//
+// Iterative - DFS
+// const hasPath = (graph, src, dst) => {
+//   let stack = [src];
+//   while (stack.length > 0) {
+//     let current = stack.pop();
+//     if (current === dst) {
+//       return true;
+//     }
+//     for (let neighbor of graph[current]) {
+//       stack.push(neighbor);
+//     }
+//   }
+//   return false;
+// };
+
+// Recursive - DFS
+// const hasPath = (graph, src, dst) => {
+//   if (src === dst) return true;
+//   for (let neighbor of graph[src]) {
+//     if (hasPath(graph, neighbor, dst) === true) {
+//       return true;
+//     }
+//   }
+//   return false;
+// };
 
 const graph = {
   f: ["g", "i"],
