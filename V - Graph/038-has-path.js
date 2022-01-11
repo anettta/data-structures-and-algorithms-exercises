@@ -6,7 +6,7 @@
 // between the source and destination nodes.
 //
 //
-// 01-11-21 DFS Recursive
+// 01-11-22 DFS Recursive
 //
 const hasPath = (graph, src, dst) => {
   if (src === dst) return true;
@@ -20,7 +20,7 @@ const hasPath = (graph, src, dst) => {
 };
 
 //
-// 01-11-21 BFS iterative
+// 01-11-22 BFS iterative
 //
 // const hasPath = (graph, src, dst) => {
 //   let queue = [src];
@@ -40,7 +40,7 @@ const hasPath = (graph, src, dst) => {
 // };
 //
 //
-// 01-11-21 DFS iterative
+// 01-11-22 DFS iterative
 //
 // const hasPath = (graph, src, dst) => {
 //   if (src === dst) return true;
