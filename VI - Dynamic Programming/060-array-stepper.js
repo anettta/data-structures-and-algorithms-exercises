@@ -14,12 +14,14 @@
 // Time: O(n^2)
 // Space: O(n)
 //
-const arrayStepper = (numbers, i = 0, memo = {}) => {
+
+const arrayStepper = (nums, i = 0, memo = {}) => {
   if (i in memo) return memo[i];
-  if (i >= numbers.length - 1) return true;
-  const maxStep = numbers[i];
+  if (i >= nums.length - 1) return true;
+
+  const maxStep = nums[i];
   for (let step = 1; step <= maxStep; step++) {
-    if (arrayStepper(numbers, i + step, memo) === true) {
+    if (arrayStepper(nums, i + step, memo) === true) {
       memo[i] = true;
       return true;
     }
@@ -27,5 +29,19 @@ const arrayStepper = (numbers, i = 0, memo = {}) => {
   memo[i] = false;
   return false;
 };
+
+// const arrayStepper = (numbers, i = 0, memo = {}) => {
+//   if (i in memo) return memo[i];
+//   if (i >= numbers.length - 1) return true;
+//   const maxStep = numbers[i];
+//   for (let step = 1; step <= maxStep; step++) {
+//     if (arrayStepper(numbers, i + step, memo) === true) {
+//       memo[i] = true;
+//       return true;
+//     }
+//   }
+//   memo[i] = false;
+//   return false;
+// };
 
 console.log(arrayStepper([2, 4, 2, 0, 0, 1])); // -> true
