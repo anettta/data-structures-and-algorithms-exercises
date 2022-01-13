@@ -8,17 +8,33 @@
 // Time: O(amt*nums);
 // Space: O(amt)
 //
-const sumPossible = (amt, nums, memo = {}) => {
-  if (amt === 0) return true;
-  if (amt < 0) return false;
-  if (amt in memo) return memo[amt];
+
+const sumPossible = (amount, nums, memo = {}) => {
+  if (amount in memo) return memo[amount];
+  if (amount < 0) return false;
+  if (amount === 0) return true;
+
   for (let num of nums) {
-    if (sumPossible(amt - num, nums, memo)) {
-      memo[amt] = true;
+    if (sumPossible(amount - num, nums, memo) === true) {
+      memo[amount] = true;
       return true;
     }
   }
-  memo[amt] = false;
+  memo[amount] = false;
   return false;
 };
+
+// const sumPossible = (amt, nums, memo = {}) => {
+//   if (amt === 0) return true;
+//   if (amt < 0) return false;
+//   if (amt in memo) return memo[amt];
+//   for (let num of nums) {
+//     if (sumPossible(amt - num, nums, memo)) {
+//       memo[amt] = true;
+//       return true;
+//     }
+//   }
+//   memo[amt] = false;
+//   return false;
+// };
 console.log(sumPossible(8, [5, 12, 4])); // -> true, 4 + 4
