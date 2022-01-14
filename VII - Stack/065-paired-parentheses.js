@@ -9,6 +9,7 @@ const pairedParentheses = (str) => {
     if (str[i] === "(") {
       count++;
     } else {
+      if (count === 0) return false;
       count--;
     }
   }
