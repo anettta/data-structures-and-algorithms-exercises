@@ -13,4 +13,5 @@ const subsets = (arr) => {
 
 console.log(subsets(["a", "b", "c"]));
 
-// O(2^n)
+// Time: ~O(2^n)
+// Space: ~O(2^n)
