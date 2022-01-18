@@ -8,7 +8,6 @@ const canColor = (graph) => {
       }
     }
   }
-
   return true;
 };
 
