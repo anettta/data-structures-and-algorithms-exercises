@@ -5,18 +5,26 @@
 //
 // You can assume that the array is non-empty
 
-// 01/03/21
-
 const maxValue = (nums) => {
   let max = -Infinity;
-  for (let i = 0; i < nums.length; i++) {
-    let num = nums[i];
-    if (num > max) {
-      max = num;
-    }
+  for (let num of nums) {
+    if (num > max) max = num;
   }
   return max;
 };
+
+// 01/03/21
+
+// const maxValue = (nums) => {
+//   let max = -Infinity;
+//   for (let i = 0; i < nums.length; i++) {
+//     let num = nums[i];
+//     if (num > max) {
+//       max = num;
+//     }
+//   }
+//   return max;
+// };
 
 // 12-16-21
 
