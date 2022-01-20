@@ -6,29 +6,49 @@
 // Time: O(n)
 // Space: O(n)
 
+const mostFrequentChar = (str) => {
+  let map = {};
+
+  for (let char of str) {
+    if (!map[char]) {
+      map[char] = 0; // initialize at 0
+    }
+    map[char] += 1; // immmediately increment it.
+  }
+
+  let mostFrequent = null;
+  for (let char of str) {
+    if (mostFrequent === null || map[char] > map[mostFrequent]) {
+      mostFrequent = char;
+    }
+  }
+
+  return mostFrequent;
+};
+
 // 01/03/22
 
-const mostFrequentChar = (str) => {
-  let count = {};
-  let freq = 0;
-  let most_frequent = str[0];
-  for (let i = 0; i < str.length; i++) {
-    let char = str[i];
-    if (!count[char]) {
-      count[char] = 0;
-    }
-    count[char] += 1;
-  }
+// const mostFrequentChar = (str) => {
+//   let count = {};
+//   let freq = 0;
+//   let most_frequent = str[0];
+//   for (let i = 0; i < str.length; i++) {
+//     let char = str[i];
+//     if (!count[char]) {
+//       count[char] = 0;
+//     }
+//     count[char] += 1;
+//   }
 
-  for (num in count) {
-    if (count[num] > freq) {
-      freq = count[num];
-      most_frequent = num;
-    }
-  }
+//   for (num in count) {
+//     if (count[num] > freq) {
+//       freq = count[num];
+//       most_frequent = num;
+//     }
+//   }
 
-  return most_frequent;
-};
+//   return most_frequent;
+// };
 
 // 12-17-21
 

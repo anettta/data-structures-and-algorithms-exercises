@@ -8,33 +8,58 @@
 // n = s1 length
 // m = s2 length
 
-// 01/03/22
-
 const anagrams = (str1, str2) => {
-  if (str1.length !== str2.length) return false;
   let map = {};
-  for (let i = 0; i < str1.length; i++) {
-    let char = str1[i];
+
+  for (let char of str1) {
     if (!map[char]) {
       map[char] = 0;
     }
     map[char] += 1;
   }
-  for (let i = 0; i < str2.length; i++) {
-    let char = str2[i];
+
+  for (let char of str2) {
     if (map[char]) {
       map[char] -= 1;
     } else {
       return false;
     }
   }
-
-  for (let i = 0; i < map.length; i++) {
-    if (map[char] !== 0) return false;
+  for (let char in map) {
+    if (map[char] !== 0) {
+      return false;
+    }
   }
-
   return true;
 };
+
+// 01/03/22
+
+// const anagrams = (str1, str2) => {
+//   if (str1.length !== str2.length) return false;
+//   let map = {};
+//   for (let i = 0; i < str1.length; i++) {
+//     let char = str1[i];
+//     if (!map[char]) {
+//       map[char] = 0;
+//     }
+//     map[char] += 1;
+//   }
+//   for (let i = 0; i < str2.length; i++) {
+//     let char = str2[i];
+//     if (map[char]) {
+//       map[char] -= 1;
+//     } else {
+//       return false;
+//     }
+//   }
+
+//   for (let i = 0; i < map.length; i++) {
+//     if (map[char] !== 0) return false;
+//   }
+
+//   return true;
+// };
 
 // 12-17-21
 

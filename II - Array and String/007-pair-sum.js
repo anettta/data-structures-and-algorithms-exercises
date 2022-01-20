@@ -9,12 +9,12 @@
 // Time: O(n)
 // Space: O(n)
 
-// 01/03/22
-
 const pairSum = (arr, target) => {
   let map = {};
+
   for (let i = 0; i < arr.length; i++) {
     let complement = target - arr[i];
+
     if (complement in map) {
       return [map[complement], i];
     }
@@ -22,6 +22,20 @@ const pairSum = (arr, target) => {
     map[arr[i]] = i;
   }
 };
+
+// 01/03/22
+
+// const pairSum = (arr, target) => {
+//   let map = {};
+//   for (let i = 0; i < arr.length; i++) {
+//     let complement = target - arr[i];
+//     if (complement in map) {
+//       return [map[complement], i];
+//     }
+
+//     map[arr[i]] = i;
+//   }
+// };
 
 // 12-17-21
 

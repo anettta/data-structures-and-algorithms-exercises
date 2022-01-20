@@ -11,34 +11,56 @@
 // Time: O(n*m)
 // Space: O(n*m)
 
-// 01/03/22
-
 const uncompress = (str) => {
-  // 122y
-  // yyyyyyyyyyy...
+  let numbers = "0123456789";
+  let newStr = [];
   let i = 0;
   let j = 0;
-  // let result = "";
-  let result = [];
-  let numbers = "0123456789";
+
   while (j < str.length) {
     if (numbers.includes(str[j])) {
-      // includes is constant since numbers is a string with fixed length; doesn't scale
       j++;
     } else {
       let num = Number(str.slice(i, j));
       for (let i = 0; i < num; i++) {
-        // result += str[j]; // O(n) because strings in JS are immutable; strings are copied over
-        // this is why using an array is better
-        // convert result to an array
-        result.push(str[j]); // pushing character to the END of an array
+        newStr.push(str[j]);
       }
       j++;
       i = j;
     }
   }
-  return result.join("");
+
+  return newStr.join("");
 };
+
+// 01/03/22
+
+// const uncompress = (str) => {
+//   // 122y
+//   // yyyyyyyyyyy...
+//   let i = 0;
+//   let j = 0;
+//   // let result = "";
+//   let result = [];
+//   let numbers = "0123456789";
+//   while (j < str.length) {
+//     if (numbers.includes(str[j])) {
+//       // includes is constant since numbers is a string with fixed length; doesn't scale
+//       j++;
+//     } else {
+//       let num = Number(str.slice(i, j));
+//       for (let i = 0; i < num; i++) {
+//         // result += str[j]; // O(n) because strings in JS are immutable; strings are copied over
+//         // this is why using an array is better
+//         // convert result to an array
+//         result.push(str[j]); // pushing character to the END of an array
+//       }
+//       j++;
+//       i = j;
+//     }
+//   }
+//   return result.join("");
+// };
 
 // 12-16-21 II
 // const uncompress = (str) => {

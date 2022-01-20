@@ -6,25 +6,41 @@
 // Time O(n+m)
 // Space O(n)
 
-// 01/03/22
-
 const intersection = (a, b) => {
-  let newArr = [];
-  let map = {};
-  for (let i = 0; i < a.length; i++) {
-    let num = a[i];
-    map[num] = i;
-  }
-
-  for (let i = 0; i < b.length; i++) {
-    let num = b[i];
-    if (map[num]) {
-      newArr.push(num);
+  let set = new Set();
+  let arr = [];
+  for (let elem of a) {
+    if (!set.has(elem)) {
+      set.add(elem);
     }
   }
-
-  return newArr;
+  for (let elem of b) {
+    if (set.has(elem)) {
+      arr.push(elem);
+    }
+  }
+  return arr;
 };
+
+// 01/03/22
+
+// const intersection = (a, b) => {
+//   let newArr = [];
+//   let map = {};
+//   for (let i = 0; i < a.length; i++) {
+//     let num = a[i];
+//     map[num] = i;
+//   }
+
+//   for (let i = 0; i < b.length; i++) {
+//     let num = b[i];
+//     if (map[num]) {
+//       newArr.push(num);
+//     }
+//   }
+
+//   return newArr;
+// };
 
 // 12-18-21
 

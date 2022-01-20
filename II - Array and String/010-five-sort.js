@@ -9,23 +9,38 @@
 // any order in the output, as long as
 // all 5s are at the end of the array.
 
-// 01-03-22
-
 const fiveSort = (nums) => {
-  let front = 0;
-  let back = nums.length - 1;
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[front] === 5 && nums[back] !== 5) {
-      [nums[front], nums[back]] = [nums[back], nums[front]];
-      front++;
-    } else if (nums[front] !== 5) {
-      front++;
-    } else if (nums[back] === 5) {
-      back--;
+  let i = 0;
+  let j = nums.length - 1;
+  while (i <= j)
+    if (nums[i] === 5 && nums[j] !== 5) {
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+      i++;
+    } else if (nums[i] !== 5) {
+      i++;
+    } else if (nums[j] === 5) {
+      j--;
     }
-  }
   return nums;
 };
+
+// 01-03-22
+
+// const fiveSort = (nums) => {
+//   let front = 0;
+//   let back = nums.length - 1;
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[front] === 5 && nums[back] !== 5) {
+//       [nums[front], nums[back]] = [nums[back], nums[front]];
+//       front++;
+//     } else if (nums[front] !== 5) {
+//       front++;
+//     } else if (nums[back] === 5) {
+//       back--;
+//     }
+//   }
+//   return nums;
+// };
 
 // 12-18-21
 
