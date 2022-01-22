@@ -18,10 +18,12 @@ class Node {
 }
 
 const insertNode = (head, value, index, count = 0) => {
-  if (head === null) return null;
+  if (head === null) {
+    return null;
+  }
   if (index === 0) {
     let newHead = new Node(value);
-    newHead.next = head;
+    newHead = head;
     return newHead;
   }
   if (count === index - 1) {
@@ -29,10 +31,53 @@ const insertNode = (head, value, index, count = 0) => {
     let temp = head.next;
     head.next = newNode;
     head.next.next = temp;
+    return head;
   }
-  insertNode(head.next, value, index, count + 1);
+
+  insertNode(head.next, value, index, count++);
   return head;
 };
+
+// const insertNode = (head, value, index) => {
+//   let count = 0;
+//   let current = head;
+
+//   while (current !== null) {
+//     if (index === 0) {
+//       let newNode = new Node(value);
+//       newNode.next = head;
+//       return newNode;
+//     }
+
+//     if (count === index - 1) {
+//       let newNode = new Node(value);
+//       let next = current.next;
+//       current.next = newNode;
+//       current.next.next = next;
+//     }
+//     count++;
+//     current = current.next;
+//   }
+//   return head;
+// };
+
+// const insertNode = (head, value, index, count = 0) => {
+//   if (head === null) return null;
+//   if (index === 0) {
+//     let newHead = new Node(value);
+//     newHead.next = head;
+//     return newHead;
+//   }
+//   if (count === index - 1) {
+//     let newNode = new Node(value);
+//     let temp = head.next;
+//     head.next = newNode;
+//     head.next.next = temp;
+//     return head
+//   }
+//   insertNode(head.next, value, index, count + 1);
+//   return head;
+// };
 
 //
 // iterative

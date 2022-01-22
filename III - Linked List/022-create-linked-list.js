@@ -8,17 +8,37 @@ class Node {
     this.next = null;
   }
 }
+
+// const createLinkedList = (values) => {
+//   let dummyHead = new Node(null);
+//   let tail = dummyHead;
+
+//   for (let val of values) {
+//     tail.next = new Node(val);
+//     tail = tail.next;
+//   }
+
+//   return dummyHead.next;
+// };
+
+const createLinkedList = (values, i = 0) => {
+  if (i === values.length) return null;
+  const head = new Node(values[i]);
+  head.next = createLinkedList(values, i + 1);
+  return head;
+};
+
 //
 // recursive
 //
-const createLinkedList = (array, i = 0) => {
-  if (i === array.length) {
-    return null;
-  }
-  const head = new Node(array[i]);
-  head.next = createLinkedList(array, i + 1);
-  return head;
-};
+// const createLinkedList = (array, i = 0) => {
+//   if (i === array.length) {
+//     return null;
+//   }
+//   const head = new Node(array[i]);
+//   head.next = createLinkedList(array, i + 1);
+//   return head;
+// };
 //
 // iterative
 //

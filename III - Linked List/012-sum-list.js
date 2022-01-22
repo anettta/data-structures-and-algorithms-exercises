@@ -11,6 +11,21 @@ class Node {
   }
 }
 
+// const sumList = (head) => {
+//   let current = head;
+//   let sum = 0;
+//   while (current !== null) {
+//     sum += current.val;
+//     current = current.next;
+//   }
+//   return sum;
+// };
+
+const sumList = (head) => {
+  if (head === null) return 0;
+  return head.val + sumList(head.next);
+};
+
 // 01/04/22
 //
 // iterative
@@ -27,10 +42,10 @@ class Node {
 //
 // recursive
 //
-const sumList = (head) => {
-  if (head === null) return 0;
-  return head.val + sumList(head.next);
-};
+// const sumList = (head) => {
+//   if (head === null) return 0;
+//   return head.val + sumList(head.next);
+// };
 
 // 12-18-21
 
