@@ -16,21 +16,35 @@ class Node {
 // Note: this solution should really be considered O(n^2) runtime
 // because the JavaScript shift() methods runs in O(n).
 //  JavaScript does not have a native queue data structure that is maximally efficient.
+
 const bottomRightValue = (root) => {
+  if (root === null) return root.val;
   let queue = [root];
   let current = null;
   while (queue.length > 0) {
     current = queue.shift();
 
-    if (current.left !== null) {
-      queue.push(current.left);
-    }
-    if (current.right !== null) {
-      queue.push(current.right);
-    }
+    if (current.left) queue.push(current.left);
+    if (current.right) queue.push(current.right);
   }
   return current.val;
 };
+
+// const bottomRightValue = (root) => {
+//   let queue = [root];
+//   let current = null;
+//   while (queue.length > 0) {
+//     current = queue.shift();
+
+//     if (current.left !== null) {
+//       queue.push(current.left);
+//     }
+//     if (current.right !== null) {
+//       queue.push(current.right);
+//     }
+//   }
+//   return current.val;
+// };
 
 const a = new Node(3);
 const b = new Node(11);

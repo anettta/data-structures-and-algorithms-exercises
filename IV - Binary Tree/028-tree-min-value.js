@@ -14,6 +14,27 @@ class Node {
   }
 }
 
+const treeMinValue = (root) => {
+  if (root === null) return Infinity;
+  const left = treeMinValue(root.left);
+  const right = treeMinValue(root.right);
+  return Math.min(root.val, left, right);
+};
+
+// const treeMinValue = (root) => {
+//   let min = Infinity;
+//   let stack = [root];
+//   while (stack.length > 0) {
+//     let current = stack.pop();
+//     if (current.val < min) {
+//       min = current.val;
+//     }
+//     if (current.left) stack.push(current.left);
+//     if (current.right) stack.push(current.right);
+//   }
+//   return min;
+// };
+
 // const treeMinValue = (root) => {
 //   if (root === null) return 0;
 //   let min = Infinity;
@@ -29,12 +50,12 @@ class Node {
 //   return min;
 // };
 
-const treeMinValue = (root) => {
-  if (root === null) return Infinity;
-  let left = treeMinValue(root.left);
-  let right = treeMinValue(root.right);
-  return Math.min(root.val, left, right);
-};
+// const treeMinValue = (root) => {
+//   if (root === null) return Infinity;
+//   let left = treeMinValue(root.left);
+//   let right = treeMinValue(root.right);
+//   return Math.min(root.val, left, right);
+// };
 
 // Time: O(n^2) BFS
 // const treeMinValue = (root) => {

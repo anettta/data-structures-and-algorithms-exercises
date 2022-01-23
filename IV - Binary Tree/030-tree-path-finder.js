@@ -16,19 +16,39 @@ class Node {
 }
 
 const pathFinder = (root, target) => {
-  let path = [];
-  if (root.val === target) return [root.val];
-  let stack = [root];
-  while (stack.length > 0) {
-    let current = stack.shift();
-    path.push(current.val);
-    if (current.val === target) return path.slice(path[target]);
-
-    if (current.left) stack.push(current.left);
-    if (current.right) stack.push(current.right);
-  }
-  return path;
+  let result = pathFinderHelper(root, target);
+  return result === null ? null : result.reverse();
 };
+const pathFinderHelper = (root, target) => {
+  if (root === null) return null;
+  if (root.val === target) return [root.val];
+  let leftPath = pathFinderHelper(root.left, target);
+  let rightPath = pathFinderHelper(root.right, target);
+  if (leftPath !== null) {
+    leftPath.push(root.val);
+    return leftPath;
+  }
+  if (rightPath !== null) {
+    rightPath.push(root.val);
+    return rightPath;
+  }
+  return null;
+};
+
+// const pathFinder = (root, target) => {
+//   let path = [];
+//   if (root.val === target) return [root.val];
+//   let stack = [root];
+//   while (stack.length > 0) {
+//     let current = stack.shift();
+//     path.push(current.val);
+//     if (current.val === target) return path.slice(path[target]);
+
+//     if (current.left) stack.push(current.left);
+//     if (current.right) stack.push(current.right);
+//   }
+//   return path;
+// };
 
 // Time: O(n)
 // Space: O(n)

@@ -12,6 +12,27 @@ class Node {
   }
 }
 
+const depthFirstValues = (root) => {
+  if (root === null) return [];
+  const left = depthFirstValues(root.left);
+  const right = depthFirstValues(root.right);
+  return [root.val, ...left, ...right];
+};
+
+// const depthFirstValues = (root) => {
+//   if (root === null) return null;
+//   let arr = [];
+//   let stack = [root];
+//   while (stack.length > 0) {
+//     let current = stack.pop();
+//     arr.push(current.val);
+
+//     if (current.right) stack.push(current.right);
+//     if (current.left) stack.push(current.left);
+//   }
+//   return arr;
+// };
+
 // 01-05-22
 //
 // iterative
@@ -33,12 +54,12 @@ class Node {
 //
 // recursive
 //
-const depthFirstValues = (root) => {
-  if (root === null) return [];
-  let leftValues = depthFirstValues(root.left);
-  let rightValues = depthFirstValues(root.right);
-  return [root.val, ...leftValues, ...rightValues];
-};
+// const depthFirstValues = (root) => {
+//   if (root === null) return [];
+//   let leftValues = depthFirstValues(root.left);
+//   let rightValues = depthFirstValues(root.right);
+//   return [root.val, ...leftValues, ...rightValues];
+// };
 
 // Time: O(n)
 // Space: O(n)

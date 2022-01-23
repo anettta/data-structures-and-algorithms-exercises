@@ -16,10 +16,21 @@ class Node {
 const maxPathSum = (root) => {
   if (root === null) return -Infinity;
   if (root.left === null && root.right === null) return root.val;
-  let maxChild = Math.max(maxPathSum(root.left), maxPathSum(root.right));
 
-  return root.val + maxChild;
+  const maxChildPathSum = Math.max(
+    maxPathSum(root.left),
+    maxPathSum(root.right)
+  );
+  return root.val + maxChildPathSum;
 };
+
+// const maxPathSum = (root) => {
+//   if (root === null) return -Infinity;
+//   if (root.left === null && root.right === null) return root.val;
+//   let maxChild = Math.max(maxPathSum(root.left), maxPathSum(root.right));
+
+//   return root.val + maxChild;
+// };
 
 // Time: O(n)
 // Space: O(n)

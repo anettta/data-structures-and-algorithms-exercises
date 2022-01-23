@@ -16,14 +16,21 @@ class Node {
     this.right = null;
   }
 }
-// Time: O(n)
-// Space: O(n)
+
 const howHigh = (root) => {
   if (root === null) return -1;
-  const leftTreeHeight = howHigh(root.left);
-  const rightTreeHeight = howHigh(root.right);
-  return 1 + Math.max(leftTreeHeight, rightTreeHeight);
+  let max = Math.max(howHigh(root.left), howHigh(root.right));
+  return 1 + max;
 };
+
+// Time: O(n)
+// Space: O(n)
+// const howHigh = (root) => {
+//   if (root === null) return -1;
+//   const leftTreeHeight = howHigh(root.left);
+//   const rightTreeHeight = howHigh(root.right);
+//   return 1 + Math.max(leftTreeHeight, rightTreeHeight);
+// };
 
 const a = new Node("a");
 const b = new Node("b");

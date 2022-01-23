@@ -10,41 +10,68 @@ class Node {
     this.right = null;
   }
 }
+
+const levelAverages = (root) => {
+  let levels = [];
+  fillLevels(root, levels, 0);
+  return levels.map(getAvgs);
+};
+
+const getAvgs = (arr) => {
+  let sum = 0;
+  for (let num of arr) {
+    sum += num;
+  }
+  return sum / arr.length;
+};
+const fillLevels = (root, levels, level) => {
+  if (root === null) return;
+
+  if (levels.length === level) {
+    levels.push([root.val]);
+  } else {
+    levels[level].push(root.val);
+  }
+
+  fillLevels(root.left, levels, level + 1);
+  fillLevels(root.right, levels, level + 1);
+};
+
 // Time: O(n)
 // Space: O(n)
 
 // start recursion
-const levelAverages = (root) => {
-  const levels = [];
-  fillLevels(root, levels, 0);
-  //   const avgs = [];
-  //   for (let level of levels) {
-  //     getAvgs(level);
-  //     avgs.push(getAvgs(level));
-  //   }
-  //   return avgs;
-  return levels.map(getAvgs);
-};
+// const levelAverages = (root) => {
+//   const levels = [];
+//   fillLevels(root, levels, 0);
+//   //   const avgs = [];
+//   //   for (let level of levels) {
+//   //     getAvgs(level);
+//   //     avgs.push(getAvgs(level));
+//   //   }
+//   //   return avgs;
+//   return levels.map(getAvgs);
+// };
 
-const getAvgs = (array) => {
-  let sum = 0;
-  for (let num of array) {
-    sum += num;
-  }
-  return sum / array.length;
-};
+// const getAvgs = (array) => {
+//   let sum = 0;
+//   for (let num of array) {
+//     sum += num;
+//   }
+//   return sum / array.length;
+// };
 
-const fillLevels = (root, levels, levelNum) => {
-  if (root === null) return;
+// const fillLevels = (root, levels, levelNum) => {
+//   if (root === null) return;
 
-  if (levels.length === levelNum) {
-    levels[levelNum] = [root.val];
-  } else {
-    levels[levelNum].push(root.val); // indexing into existing subarray
-  }
-  fillLevels(root.left, levels, levelNum + 1);
-  fillLevels(root.right, levels, levelNum + 1);
-};
+//   if (levels.length === levelNum) {
+//     levels[levelNum] = [root.val];
+//   } else {
+//     levels[levelNum].push(root.val); // indexing into existing subarray
+//   }
+//   fillLevels(root.left, levels, levelNum + 1);
+//   fillLevels(root.right, levels, levelNum + 1);
+// };
 // end recursion
 
 const a = new Node(3);

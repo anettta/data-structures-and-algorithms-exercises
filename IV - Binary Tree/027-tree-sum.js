@@ -12,6 +12,24 @@ class Node {
 
 // const treeSum = (root) => {
 //   let sum = 0;
+//   let stack = [root];
+//   while (stack.length > 0) {
+//     let current = stack.pop();
+//     sum += current.val;
+
+//     if (current.right) stack.push(current.right);
+//     if (current.left) stack.push(current.left);
+//   }
+//   return sum;
+// };
+
+const treeSum = (root) => {
+  if (root === null) return 0;
+  return root.val + treeSum(root.right) + treeSum(root.left);
+};
+
+// const treeSum = (root) => {
+//   let sum = 0;
 //   let queue = [root];
 //   while (queue.length > 0) {
 //     let current = queue.shift();
@@ -22,10 +40,10 @@ class Node {
 //   return sum;
 // };
 
-const treeSum = (root) => {
-  if (root === null) return 0;
-  return root.val + treeSum(root.left) + treeSum(root.right);
-};
+// const treeSum = (root) => {
+//   if (root === null) return 0;
+//   return root.val + treeSum(root.left) + treeSum(root.right);
+// };
 
 // BFS - iterative
 // const treeSum = (root) => {

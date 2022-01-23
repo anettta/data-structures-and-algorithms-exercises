@@ -12,17 +12,31 @@ class Node {
 }
 
 const breadthFirstValues = (root) => {
-  if (root === null) return [];
-  let values = [];
+  if (root === null) return null;
   let queue = [root];
+  let values = [];
   while (queue.length > 0) {
     let current = queue.shift();
     values.push(current.val);
+
     if (current.left) queue.push(current.left);
     if (current.right) queue.push(current.right);
   }
   return values;
 };
+
+// const breadthFirstValues = (root) => {
+//   if (root === null) return [];
+//   let values = [];
+//   let queue = [root];
+//   while (queue.length > 0) {
+//     let current = queue.shift();
+//     values.push(current.val);
+//     if (current.left) queue.push(current.left);
+//     if (current.right) queue.push(current.right);
+//   }
+//   return values;
+// };
 
 // Time: O(n)
 // Space: O(n)
