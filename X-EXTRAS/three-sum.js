@@ -10,10 +10,11 @@ const threeSum = (arr, target) => {
     }
   }
   for (let i = 0; i < arr.length; i++) {
-    let difference = target - arr[i];
+    let num3 = arr[i];
+    let difference = target - num3;
     if (difference in pairs) {
       const [num1, num2] = pairs[difference];
-      return [num1, num2, arr[i]];
+      return [num1, num2, num3];
     }
   }
 };
