@@ -1,4 +1,4 @@
-const treeSum = (arr, target) => {
+const threeSum = (arr, target) => {
   const pairs = {};
 
   for (let i = 0; i < arr.length; i++) {
@@ -18,4 +18,4 @@ const treeSum = (arr, target) => {
   }
 };
 
-console.log(treeSum([10, 23, 45, 5, 20, 30, 40], 100));
+console.log(threeSum([10, 23, 45, 5, 20, 30, 40], 100));
