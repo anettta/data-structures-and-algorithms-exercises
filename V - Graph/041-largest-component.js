@@ -1,25 +1,20 @@
-// Write a function, largestComponent, that takes in the adjacency list of an undirected graph. The function should return the size
-// of the largest connected component in the graph.
+// Write a function, largestComponent, that takes in the adjacency list of an undirected graph.
+// The function should return the size of the largest connected component in the graph.
 
 const largestComponent = (graph) => {
+  let largest = 0;
   let visited = new Set();
-  let largest = -Infinity;
   for (let node in graph) {
-    const size = explore(graph, node, visited);
-    if (size > largest) {
-      largest = size;
-    }
+    let size = explore(graph, node, visited);
+    if (size > largest) largest = size;
   }
   return largest;
 };
 
 const explore = (graph, current, visited) => {
-  if (visited.has(String(current))) return 0;
-
-  visited.add(String(current));
-
+  if (visited.has(current)) return 0;
+  visited.add(current);
   let size = 1;
-
   for (let neighbor of graph[current]) {
     size += explore(graph, neighbor, visited);
   }

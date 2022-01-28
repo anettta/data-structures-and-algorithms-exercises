@@ -6,86 +6,31 @@
 // between the source and destination nodes.
 //
 
+// DFS - recursive
+
+// const hasPath = (graph, src, dst) => {
+//   if (src === dst) return true;
+//   for (let neighbor of graph[src]) {
+//     if (hasPath(graph, neighbor, dst) === true) {
+//       return true;
+//     }
+//   }
+//   return false;
+// };
+
+// BFS - iterative
+
 const hasPath = (graph, src, dst) => {
   let queue = [src];
   while (queue.length > 0) {
     let current = queue.shift();
-    if (current === dst) {
-      return true;
-    }
+    if (current === dst) return true;
     for (let neighbor of graph[current]) {
       queue.push(neighbor);
     }
   }
   return false;
 };
-
-// const hasPath = (graph, src, dst) => {
-//   if (src === dst) {
-//     return true;
-//   }
-//   for (let neighbor of graph[src]) {
-//     if (hasPath(graph, neighbor, dst) === true) {
-//       return true;
-//     }
-//   }
-
-//   return false;
-// };
-
-//
-// 01-11-22 DFS Recursive
-//
-// const hasPath = (graph, src, dst) => {
-//   if (src === dst) return true;
-
-//   for (let neighbor of graph[src]) {
-//     if (hasPath(graph, neighbor, dst) === true) {
-//       return true;
-//     }
-//   }
-//   return false;
-// };
-
-//
-// 01-11-22 BFS iterative
-//
-// const hasPath = (graph, src, dst) => {
-//   let queue = [src];
-//   while (queue.length > 0) {
-//     let current = queue.shift();
-//     if (current === dst) {
-//       return true;
-//     }
-//     for (let neighbor of graph[current]) {
-//       queue.push(neighbor);
-//       if (neighbor === dst) {
-//         return true;
-//       }
-//     }
-//   }
-//   return false;
-// };
-//
-//
-// 01-11-22 DFS iterative
-//
-// const hasPath = (graph, src, dst) => {
-//   if (src === dst) return true;
-//   const stack = [src];
-//   while (stack.length > 0) {
-//     let current = stack.pop();
-//     for (let neighbor of graph[current]) {
-//       stack.push(neighbor);
-//       if (neighbor === dst) {
-//         return true;
-//       }
-//     }
-//   }
-//   return false;
-// };
-//
-//
 //
 // Iterative - DFS
 // const hasPath = (graph, src, dst) => {

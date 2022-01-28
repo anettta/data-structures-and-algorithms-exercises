@@ -7,8 +7,8 @@
 // connected region of land.
 
 const islandCount = (grid) => {
-  let count = 0;
   let visited = new Set();
+  let count = 0;
   for (let r = 0; r < grid.length; r++) {
     for (let c = 0; c < grid[0].length; c++) {
       if (explore(grid, r, c, visited) === true) {
@@ -22,19 +22,18 @@ const islandCount = (grid) => {
 const explore = (grid, r, c, visited) => {
   const rowInBounds = 0 <= r && r < grid.length;
   const colInBounds = 0 <= c && c < grid[0].length;
-  if (!rowInBounds || !colInBounds) return false;
 
+  if (!rowInBounds || !colInBounds) return false;
   if (grid[r][c] === "W") return false;
 
-  const position = r + "," + c;
-  if (visited.has(position)) return false; // not a new island
+  let position = r + "," + c;
+  if (visited.has(position)) return false;
   visited.add(position);
 
-  explore(grid, r - 1, c, visited); // up
-  explore(grid, r + 1, c, visited); // down
-  explore(grid, r, c - 1, visited); // left
-  explore(grid, r, c + 1, visited); // right
-
+  explore(grid, r - 1, c, visited);
+  explore(grid, r + 1, c, visited);
+  explore(grid, r, c - 1, visited);
+  explore(grid, r, c + 1, visited);
   return true;
 };
 

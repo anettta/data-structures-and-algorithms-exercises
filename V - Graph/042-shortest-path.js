@@ -10,19 +10,17 @@
 const shortestPath = (edges, nodeA, nodeB) => {
   const graph = buildGraph(edges);
   let visited = new Set([nodeA]);
-
   let queue = [[nodeA, 0]];
 
   while (queue.length > 0) {
     const [node, distance] = queue.shift();
-
     if (node === nodeB) return distance;
 
     for (let neighbor of graph[node]) {
-      if (!visited.has(String(neighbor))) {
-        visited.add(String(neighbor));
-        queue.push([neighbor, distance + 1]);
+      if (!visited.has(neighbor)) {
+        visited.add(node);
       }
+      queue.push([neighbor, distance + 1]);
     }
   }
   return -1;
