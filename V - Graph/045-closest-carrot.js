@@ -12,36 +12,37 @@
 // then return -1.
 
 const closestCarrot = (grid, startRow, startCol) => {
-  let queue = [[startRow, startCol, 0]]; // initializing with a starting position
-
-  let visited = new Set([startRow + "," + startCol]);
+  const visited = new Set([startRow + "," + startCol]);
+  const queue = [[startRow, startCol, 0]];
 
   while (queue.length > 0) {
-    const [row, column, distance] = queue.shift();
-    if (grid[row][column] === "C") return distance;
+    const [row, col, distance] = queue.shift();
+
+    if (grid[row][col] === "C") return distance;
 
     const deltas = [
-      [0, 1],
-      [0, -1],
       [1, 0],
       [-1, 0],
+      [0, 1],
+      [0, -1],
     ];
 
     for (let delta of deltas) {
-      const [rowDelta, colDelta] = delta;
-      const neighborRow = row + rowDelta;
-      const neighborCol = column + colDelta;
-      const rowInbounds = 0 <= neighborRow && neighborRow < grid.length;
-      const colInbounds = 0 <= neighborCol && neighborCol < grid[0].length;
-      const pos = neighborRow + "," + neighborCol;
+      const [deltaRow, deltaCol] = delta;
+      const neighborRow = row + deltaRow;
+      const neighborCol = col + deltaCol;
+
+      const rowInBounds = 0 <= neighborRow && neighborRow < grid.length;
+      const colInBounds = 0 <= neighborCol && neighborCol < grid[0].length;
+      const neighborPosition = neighborRow + "," + neighborCol;
       if (
-        rowInbounds &&
-        colInbounds &&
+        rowInBounds &&
+        colInBounds &&
         grid[neighborRow][neighborCol] !== "X" &&
-        !visited.has(pos)
+        !visited.has(neighborPosition)
       ) {
         queue.push([neighborRow, neighborCol, distance + 1]);
-        visited.add(pos);
+        visited.add(neighborPosition);
       }
     }
   }

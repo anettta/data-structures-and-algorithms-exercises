@@ -15,12 +15,14 @@
 
 const semestersRequired = (numCourses, prereqs) => {
   const graph = buildGraph(numCourses, prereqs);
-  let distance = {};
-  for (let i = 0; i < numCourses; i++) {
-    if (graph[i].length === 0) distance[i] = 1;
+  const distance = {};
+  for (let node in graph) {
+    if (graph[node] === 0) {
+      distance[node] = 1;
+    }
   }
-  for (let i = 0; i < numCourses; i++) {
-    traverseDistance(graph, i, distance);
+  for (let course = 0; course < numCourses; course++) {
+    traverseDistance(graph, course, distance);
   }
   return Math.max(...Object.values(distance));
 };
@@ -28,19 +30,19 @@ const semestersRequired = (numCourses, prereqs) => {
 const traverseDistance = (graph, node, distance) => {
   if (node in distance) return distance[node];
 
-  let maxDistance = 0;
+  let maxSemesters = 0;
   for (let neighbor of graph[node]) {
-    const neighborDistance = traverseDistance(graph, neighbor, distance);
-    if (neighborDistance > maxDistance) maxDistance = neighborDistance;
+    const neighborSemesters = traverseDistance(graph, neighbor, distance);
+    if (neighborSemesters > maxSemesters) maxSemesters = neighborSemesters;
   }
-  distance[node] = maxDistance + 1;
+  distance[node] = 1 + maxSemesters;
   return distance[node];
 };
 
 const buildGraph = (numCourses, prereqs) => {
-  let graph = {};
-  for (let i = 0; i < numCourses; i++) {
-    graph[i] = [];
+  const graph = {};
+  for (let course = 0; course < numCourses; course++) {
+    graph[course] = [];
   }
   for (let prereq of prereqs) {
     const [a, b] = prereq;
@@ -56,4 +58,5 @@ const prereqs = [
   [3, 5],
   [0, 5],
 ];
+console.log(buildGraph(numCourses, prereqs));
 console.log(semestersRequired(numCourses, prereqs)); // -> 3

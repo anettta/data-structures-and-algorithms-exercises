@@ -9,42 +9,45 @@ const bestBridge = (grid) => {
   let mainIsland;
   for (let r = 0; r < grid.length; r++) {
     for (let c = 0; c < grid[0].length; c++) {
-      const possibleIsland = traverseIsland(grid, r, c, new Set());
-      if (possibleIsland.size > 0) {
-        mainIsland = possibleIsland;
+      const potentialIsland = traverseIsland(grid, r, c, new Set());
+      if (potentialIsland.size > 0) {
+        mainIsland = potentialIsland;
         break;
       }
     }
   }
   const visited = new Set(mainIsland);
-  const queue = [];
+  let queue = [];
   for (let pos of mainIsland) {
-    const [row, col] = pos.split(",").map(Number);
-    queue.push([row, col, 0]);
+    const [r, c] = pos.split(",").map(Number);
+    queue.push([r, c, 0]);
   }
+
   while (queue.length > 0) {
-    const [row, col, distance] = queue.shift();
-    const pos = row + "," + col;
-    if (grid[row][col] === "L" && !mainIsland.has(pos)) {
+    const [r, c, distance] = queue.shift();
+    let posMain = r + "," + c;
+    if (grid[r][c] === "L" && !mainIsland.has(posMain)) {
       return distance - 1;
     }
+
     const deltas = [
-      [-1, 0],
       [1, 0],
-      [0, -1],
+      [-1, 0],
       [0, 1],
+      [0, -1],
     ];
+
     for (let delta of deltas) {
-      const [deltaRow, deltaCol] = delta;
-      const neighborRow = row + deltaRow;
-      const neighborCol = col + deltaCol;
-      const neighborPos = neighborRow + "," + neighborCol;
+      const [rowDelta, colDelta] = delta;
+      const neighborRow = r + rowDelta;
+      const neighborCol = c + colDelta;
+      const posNeighbors = neighborRow + "," + neighborCol;
       if (
         isInBounds(grid, neighborRow, neighborCol) &&
-        !visited.has(neighborPos)
+        !visited.has(posNeighbors)
       ) {
-        visited.add(neighborPos);
         queue.push([neighborRow, neighborCol, distance + 1]);
+        visited.add(posNeighbors);
       }
     }
   }
@@ -56,27 +59,26 @@ const isInBounds = (grid, row, col) => {
   return rowInBounds && colInBounds;
 };
 
-const traverseIsland = (grid, row, col, visited) => {
-  if (!isInBounds(grid, row, col) || grid[row][col] === "W") return visited;
-  const pos = row + "," + col;
-  if (visited.has(pos)) return visited;
+const traverseIsland = (grid, r, c, visited) => {
+  if (!isInBounds(grid, r, c) || grid[r][c] === "W") return visited;
 
+  const pos = r + "," + c;
+  if (visited.has(pos)) return visited;
   visited.add(pos);
 
-  traverseIsland(grid, row - 1, col, visited);
-  traverseIsland(grid, row + 1, col, visited);
-  traverseIsland(grid, row, col - 1, visited);
-  traverseIsland(grid, row, col + 1, visited);
-
+  traverseIsland(grid, r - 1, c, visited);
+  traverseIsland(grid, r + 1, c, visited);
+  traverseIsland(grid, r, c - 1, visited);
+  traverseIsland(grid, r, c + 1, visited);
   return visited;
 };
 
 const grid = [
   ["W", "W", "W", "L", "L"],
   ["L", "L", "W", "W", "L"],
-  ["L", "L", "L", "W", "L"],
+  ["L", "L", "W", "W", "L"],
   ["W", "L", "W", "W", "W"],
   ["W", "W", "W", "W", "W"],
   ["W", "W", "W", "W", "W"],
 ];
-console.log(bestBridge(grid)); // -> 1
+console.log(bestBridge(grid)); // -> 2

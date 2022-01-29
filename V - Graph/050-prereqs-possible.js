@@ -16,7 +16,7 @@ const prereqsPossible = (numCourses, prereqs) => {
   const graph = buildGraph(numCourses, prereqs);
   for (let node in graph) {
     if (hasCycle(graph, node, visiting, visited)) {
-      return false;
+      return false; // cycle found
     }
   }
   return true;
@@ -38,12 +38,12 @@ const hasCycle = (graph, node, visiting, visited) => {
 
 const buildGraph = (numCourses, prereqs) => {
   const graph = {};
-  for (let i = 0; i < numCourses; i++) {
-    graph[i] = [];
+  for (let course = 0; course < numCourses; course++) {
+    graph[course] = [];
   }
   for (let prereq of prereqs) {
-    const [a, b] = prereq;
-    graph[a].push(String(b));
+    const [courseA, courseB] = prereq;
+    graph[courseA].push(String(courseB));
   }
   return graph;
 };
