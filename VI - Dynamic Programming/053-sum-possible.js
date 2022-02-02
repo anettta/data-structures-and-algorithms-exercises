@@ -10,12 +10,12 @@
 //
 
 const sumPossible = (amount, nums, memo = {}) => {
-  if (amount in memo) return memo[amount];
-  if (amount < 0) return false;
   if (amount === 0) return true;
+  if (amount < 0) return false;
+  if (amount in memo) return memo[amount];
 
-  for (let num of nums) {
-    if (sumPossible(amount - num, nums, memo) === true) {
+  for (let i = 0; i < nums.length; i++) {
+    if (sumPossible(amount - nums[i], nums, memo) === true) {
       memo[amount] = true;
       return true;
     }

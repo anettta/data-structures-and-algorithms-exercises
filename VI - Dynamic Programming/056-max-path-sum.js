@@ -11,14 +11,15 @@
 //
 
 const maxPathSum = (grid, r = 0, c = 0, memo = {}) => {
-  const pos = r + "," + c;
-  if (pos in memo) return memo[pos];
   if (r === grid.length || c === grid[0].length) return -Infinity;
   if (r === grid.length - 1 && c === grid[0].length - 1) return grid[r][c];
+  let pos = r + "," + c;
+  if (pos in memo) return memo[pos];
+  let down = maxPathSum(grid, r + 1, c, memo);
+  let right = maxPathSum(grid, r, c + 1, memo);
 
-  let maxDownPath = maxPathSum(grid, r + 1, c, memo);
-  let maxRightPath = maxPathSum(grid, r, c + 1, memo);
-  memo[pos] = grid[r][c] + Math.max(maxDownPath, maxRightPath);
+  max = grid[r][c] + Math.max(down, right);
+  memo[pos] = max;
   return memo[pos];
 };
 

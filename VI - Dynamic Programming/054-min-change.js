@@ -9,23 +9,21 @@
 //
 
 const minChange = (amount, coins) => {
-  const answer = minimumChange(amount, coins);
-  return answer === Infinity ? -1 : answer;
+  const result = minimumChange(amount, coins);
+  return result === Infinity ? -1 : result;
 };
 
 const minimumChange = (amount, coins, memo = {}) => {
-  if (amount < 0) return Infinity;
   if (amount === 0) return 0;
+  if (amount < 0) return Infinity;
   if (amount in memo) return memo[amount];
-
-  let minCoins = Infinity;
-
+  let min = Infinity;
   for (let coin of coins) {
     const numCoins = 1 + minimumChange(amount - coin, coins, memo);
-    minCoins = Math.min(minCoins, numCoins);
+    if (numCoins < min) min = numCoins;
   }
-
-  return (memo[amount] = minCoins);
+  memo[amount] = min;
+  return min;
 };
 
 // const minChange = (amt, coins) => {

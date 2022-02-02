@@ -16,16 +16,16 @@
 //
 
 const summingSquares = (num, memo = {}) => {
-  if (num in memo) return memo[num];
   if (num === 0) return 0;
-  let minSquares = Infinity;
+  if (num in memo) return memo[num];
+  let min = Infinity;
   for (let i = 1; i <= Math.sqrt(num); i++) {
     const square = i * i;
-    const numSquares = 1 + summingSquares(num - square, memo);
-    minSquares = Math.min(numSquares, minSquares);
+    const minSquares = 1 + summingSquares(num - square, memo);
+    if (minSquares < min) min = minSquares;
   }
-  memo[num] = minSquares;
-  return minSquares;
+  memo[num] = min;
+  return min;
 };
 
 // const summingSquares = (n, memo = {}) => {
