@@ -5,16 +5,19 @@
 
 const pairedParentheses = (str) => {
   let count = 0;
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === "(") {
+  for (let char of str) {
+    if (char === "(") {
       count++;
-    } else {
-      if (count === 0) return false;
+    } else if (char === ")") {
       count--;
     }
   }
-  return count === 0 ? true : false;
+  if (count === 0) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
-console.log(pairedParentheses("(())"));
-console.log(pairedParentheses("((**)"));
+console.log(pairedParentheses("(())")); // true
+console.log(pairedParentheses("((**)")); // false

@@ -4,23 +4,28 @@
 // whether or not the string contains correctly matched brackets.
 
 const befittingBrackets = (str) => {
-  let stack = [];
-  let brackets = {
-    "{": "}",
-    "[": "]",
+  const brackets = {
     "(": ")",
+    "[": "]",
+    "{": "}",
   };
-  // {{}}
-  for (let element of str) {
-    if (element in brackets) {
-      stack.push(brackets[element]);
-    } else if (stack.length > 0 && element === stack[stack.length - 1]) {
-      stack.pop();
+  let stack = [];
+  for (let char of str) {
+    if (char in brackets) {
+      stack.push(brackets[char]);
     } else {
-      return false;
+      if (stack.length > 0 && stack[stack.length - 1] === char) {
+        stack.pop();
+      } else {
+        return false;
+      }
     }
   }
-  return stack.length === 0 ? true : false;
+  if (stack.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 // const befittingBrackets = (str) => {
@@ -44,5 +49,5 @@ const befittingBrackets = (str) => {
 //   return stack.length === 0;
 // };
 
-console.log(befittingBrackets("((}}[]"));
-console.log(befittingBrackets("[]"));
+console.log(befittingBrackets("((}}[]")); // false
+console.log(befittingBrackets("[]")); // true

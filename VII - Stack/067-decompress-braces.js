@@ -1,6 +1,7 @@
 const decompressBraces = (str) => {
-  let stack = [];
-  let numbers = "0123456789";
+  const numbers = "0123456789";
+  const stack = [];
+
   for (let char of str) {
     if (numbers.includes(char)) {
       stack.push(Number(char));
@@ -8,11 +9,11 @@ const decompressBraces = (str) => {
       if (char === "}") {
         let segment = "";
         while (typeof stack[stack.length - 1] !== "number") {
-          let popped = stack.pop();
+          const popped = stack.pop();
           segment = popped + segment;
         }
-        let num = stack.pop();
-        stack.push(repeat(num, segment));
+        const num = stack.pop();
+        stack.push(repeat(segment, num));
       } else if (char !== "{") {
         stack.push(char);
       }
@@ -21,7 +22,7 @@ const decompressBraces = (str) => {
   return stack.join("");
 };
 
-const repeat = (num, char) => {
+const repeat = (char, num) => {
   let result = "";
   for (let i = 0; i < num; i++) {
     result += char;
@@ -60,4 +61,4 @@ const repeat = (num, char) => {
 //   }
 //   return result;
 // };
-console.log(decompressBraces("3r9{u}"));
+console.log(decompressBraces("3r9{u}")); // 3ruuuuuuuuu
