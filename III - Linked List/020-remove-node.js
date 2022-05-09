@@ -17,11 +17,29 @@ class Node {
 }
 
 const removeNode = (head, target) => {
-  if (head === null) return null;
-  if (head.val === target) return head.next;
-  head.next = removeNode(head.next, target);
+  // if (head === null) return null;
+  // if (head.val === target) return head.next;
+  // head.next = removeNode(head.next, target);
+  // return head;
+  let current = head;
+  let prev = null;
+  while (current !== null) {
+    if (current.val === target) {
+      prev.next = current.next;
+      break;
+    }
+    prev = current;
+    current = current.next;
+  }
   return head;
 };
+
+// const removeNode = (head, target) => {
+//   if (head === null) return null;
+//   if (head.val === target) return head.next;
+//   head.next = removeNode(head.next, target);
+//   return head;
+// };
 
 // iterative
 //

@@ -10,6 +10,12 @@ class Node {
   }
 }
 
+const getNodeValue = (head, idx) => {
+  if (head === null) return null;
+  if (idx === 0) return head.val;
+  return getNodeValue(head.next, idx - 1);
+};
+
 // const getNodeValue = (head, idx) => {
 //   let current = head;
 //   let count = 0;
@@ -23,11 +29,11 @@ class Node {
 //   return null;
 // };
 
-const getNodeValue = (head, idx) => {
-  if (head === null) return null;
-  if (idx === 0) return head.val;
-  return getNodeValue(head.next, idx - 1);
-};
+// const getNodeValue = (head, idx) => {
+//   if (head === null) return null;
+//   if (idx === 0) return head.val;
+//   return getNodeValue(head.next, idx - 1);
+// };
 
 // 01/04/22
 

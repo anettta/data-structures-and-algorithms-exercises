@@ -18,25 +18,49 @@ class Node {
 }
 
 const insertNode = (head, value, index, count = 0) => {
-  if (head === null) {
-    return null;
-  }
-  if (index === 0) {
-    let newHead = new Node(value);
-    newHead = head;
-    return newHead;
-  }
+  if (head === null) return null;
   if (count === index - 1) {
-    let newNode = new Node(value);
     let temp = head.next;
-    head.next = newNode;
+    head.next = new Node(value);
     head.next.next = temp;
     return head;
   }
-
-  insertNode(head.next, value, index, count++);
+  insertNode(head.next, value, index, count + 1);
   return head;
 };
+
+// const insertNode = (head, value, index, count = 0) => {
+//   if (head === null) return null;
+
+//   if (count === index - 1) {
+//     let temp = head.next;
+//     head.next = new Node(value);
+//     head.next.next = temp;
+//     return head;
+//   }
+//   insertNode(head.next, value, index, count + 1);
+//   return head;
+// };
+
+// const insertNode = (head, value, index) => {
+// let count = 0;
+// let current = head;
+// if (index === 0) {
+//   let newNode = new Node(value);
+//   newNode.next = head;
+//   return newNode;
+// }
+// while (current !== null) {
+//   if (count === index - 1) {
+//     let temp = current.next;
+//     current.next = new Node(value);
+//     current.next.next = temp;
+//   }
+//   count++;
+//   current = current.next;
+// }
+// return head;
+// };
 
 // const insertNode = (head, value, index) => {
 //   let count = 0;
@@ -111,4 +135,4 @@ a.next = b;
 b.next = c;
 c.next = d;
 
-console.log(insertNode(a, "x", 1));
+console.log(insertNode(a, "x", 2));

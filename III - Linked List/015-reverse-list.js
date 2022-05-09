@@ -9,6 +9,23 @@ class Node {
   }
 }
 
+const reverseList = (head, prev = null) => {
+  if (head === null) return prev;
+  let next = head.next;
+  head.next = prev;
+  return reverseList(next, head);
+  // let prev = null;
+  // let current = head;
+  // while (current !== null) {
+  //   let next = current.next;
+  //   current.next = prev;
+  //   prev = current;
+  //   current = next;
+  // }
+
+  // return prev;
+};
+
 // const reverseList = (head) => {
 //   let current = head;
 //   let prev = null;
@@ -21,12 +38,12 @@ class Node {
 //   return prev;
 // };
 
-const reverseList = (head, prev = null) => {
-  if (head === null) return prev;
-  let next = head.next;
-  head.next = prev;
-  return reverseList(next, head);
-};
+// const reverseList = (head, prev = null) => {
+//   if (head === null) return prev;
+//   let next = head.next;
+//   head.next = prev;
+//   return reverseList(next, head);
+// };
 
 // 01/04/22
 //

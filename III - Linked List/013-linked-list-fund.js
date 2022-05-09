@@ -9,6 +9,18 @@ class Node {
   }
 }
 
+const linkedListFund = (head, target) => {
+  if (head === null) return false;
+  if (head.val === target) return true;
+  return linkedListFund(head.next, target);
+  // let current = head;
+  // while (current !== null) {
+  //   if (current.val === target) return true;
+  //   current = current.next;
+  // }
+  // return false;
+};
+
 // const linkedListFund = (head, target) => {
 //   let current = head;
 //   while (current !== null) {
@@ -20,11 +32,11 @@ class Node {
 //   return false;
 // };
 
-const linkedListFund = (head, target) => {
-  if (head === null) return false;
-  if (head.val === target) return true;
-  return linkedListFund(head.next, target);
-};
+// const linkedListFund = (head, target) => {
+//   if (head === null) return false;
+//   if (head.val === target) return true;
+//   return linkedListFund(head.next, target);
+// };
 
 // 01/04/22
 //
@@ -103,4 +115,4 @@ b.next = c;
 c.next = d;
 
 console.log(linkedListFund(a, "c")); // true
-console.log(linkedListFund(a, "z")); // false
+console.log(linkedListFund(a, "x")); // false
