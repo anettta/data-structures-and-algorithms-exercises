@@ -8,10 +8,30 @@
 const maxValue = (nums) => {
   let max = -Infinity;
   for (let num of nums) {
-    if (num > max) max = num;
+    if (num > max) {
+      max = num;
+    }
   }
   return max;
 };
+
+// const maxValue = (nums) => {
+//   let max = -Infinity;
+//   for (num of nums) {
+//     if (num > max) {
+//       max = num;
+//     }
+//   }
+//   return max;
+// };
+
+// const maxValue = (nums) => {
+//   let max = -Infinity;
+//   for (let num of nums) {
+//     if (num > max) max = num;
+//   }
+//   return max;
+// };
 
 // 01/03/21
 

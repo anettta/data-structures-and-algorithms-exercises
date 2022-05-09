@@ -15,23 +15,75 @@ const anagrams = (str1, str2) => {
     if (!map[char]) {
       map[char] = 0;
     }
-    map[char] += 1;
+    map[char]++;
   }
 
   for (let char of str2) {
     if (map[char]) {
-      map[char] -= 1;
+      map[char]--;
     } else {
       return false;
     }
   }
-  for (let char in map) {
-    if (map[char] !== 0) {
+
+  for (let key in map) {
+    if (map[key] !== 0) {
       return false;
     }
   }
   return true;
 };
+
+// const anagrams = (str1, str2) => {
+//   let map = {};
+
+//   for (let char of str1) {
+//     if (!map[char]) {
+//       map[char] = 0;
+//     }
+//     map[char]++;
+//   }
+
+//   for (let char of str2) {
+//     if (map[char]) {
+//       map[char]--;
+//     } else {
+//       return false;
+//     }
+//   }
+
+//   for (let char in map) {
+//     if (map[char] !== 0) {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
+
+// const anagrams = (str1, str2) => {
+//   let map = {};
+
+//   for (let char of str1) {
+//     if (!map[char]) {
+//       map[char] = 0;
+//     }
+//     map[char] += 1;
+//   }
+
+//   for (let char of str2) {
+//     if (map[char]) {
+//       map[char] -= 1;
+//     } else {
+//       return false;
+//     }
+//   }
+//   for (let char in map) {
+//     if (map[char] !== 0) {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
 
 // 01/03/22
 

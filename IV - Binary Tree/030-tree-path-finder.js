@@ -17,23 +17,51 @@ class Node {
 
 const pathFinder = (root, target) => {
   let result = pathFinderHelper(root, target);
-  return result === null ? null : result.reverse();
+
+  if (result === null) {
+    return null;
+  } else {
+    return result.reverse();
+  }
 };
+
 const pathFinderHelper = (root, target) => {
   if (root === null) return null;
   if (root.val === target) return [root.val];
-  let leftPath = pathFinderHelper(root.left, target);
-  let rightPath = pathFinderHelper(root.right, target);
+
+  const leftPath = pathFinderHelper(root.left, target);
+
   if (leftPath !== null) {
-    leftPath.push(root.val);
+    leftPath.unshift(root.val);
     return leftPath;
   }
+  const rightPath = pathFinderHelper(root.right, target);
   if (rightPath !== null) {
-    rightPath.push(root.val);
+    rightPath.unshift(root.val);
     return rightPath;
   }
   return null;
 };
+
+// const pathFinder = (root, target) => {
+//   let result = pathFinderHelper(root, target);
+//   return result === null ? null : result.reverse();
+// };
+// const pathFinderHelper = (root, target) => {
+//   if (root === null) return null;
+//   if (root.val === target) return [root.val];
+//   let leftPath = pathFinderHelper(root.left, target);
+//   let rightPath = pathFinderHelper(root.right, target);
+//   if (leftPath !== null) {
+//     leftPath.push(root.val);
+//     return leftPath;
+//   }
+//   if (rightPath !== null) {
+//     rightPath.push(root.val);
+//     return rightPath;
+//   }
+//   return null;
+// };
 
 // const pathFinder = (root, target) => {
 //   let path = [];
@@ -96,4 +124,4 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-console.log(pathFinder(a, "e")); // -> [ 'a', 'b', 'e' ]
+console.log(pathFinderHelper(a, "e")); // -> [ 'a', 'b', 'e' ]

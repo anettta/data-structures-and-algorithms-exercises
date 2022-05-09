@@ -9,6 +9,7 @@
 
 const pairProduct = (arr, target) => {
   let map = {};
+
   for (let i = 0; i < arr.length; i++) {
     let complement = target / arr[i];
     if (complement in map) {
@@ -17,6 +18,17 @@ const pairProduct = (arr, target) => {
     map[arr[i]] = i;
   }
 };
+
+// const pairProduct = (arr, target) => {
+//   let map = {};
+//   for (let i = 0; i < arr.length; i++) {
+//     let complement = target / arr[i];
+//     if (complement in map) {
+//       return [map[complement], i];
+//     }
+//     map[arr[i]] = i;
+//   }
+// };
 
 // 01/03/22
 

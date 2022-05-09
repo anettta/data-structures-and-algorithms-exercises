@@ -31,13 +31,13 @@ const allTreePathsHelper = (root) => {
   let paths = [];
   let leftSubPaths = allTreePathsHelper(root.left);
   let rightSubPaths = allTreePathsHelper(root.right);
-
-  for (let subPath of leftSubPaths) {
-    paths.push([root.val, ...subPath]);
-  }
   for (let subPath of rightSubPaths) {
-    paths.push([root.val, ...subPath]);
+    paths.unshift([root.val, ...subPath]);
   }
+  for (let subPath of leftSubPaths) {
+    paths.unshift([root.val, ...subPath]);
+  }
+
   return paths;
 };
 
@@ -80,7 +80,7 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-console.log(allTreePaths(a)); // ->
+console.log(allTreePathsHelper(a)); // ->
 // [
 //   [ 'a', 'b', 'd' ],
 //   [ 'a', 'b', 'e' ],

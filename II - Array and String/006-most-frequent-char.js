@@ -6,25 +6,64 @@
 // Time: O(n)
 // Space: O(n)
 
-const mostFrequentChar = (str) => {
+const mostFrequent = (str) => {
+  let mostFrequentChar = null;
+
   let map = {};
 
   for (let char of str) {
     if (!map[char]) {
-      map[char] = 0; // initialize at 0
+      map[char] = 0;
     }
-    map[char] += 1; // immmediately increment it.
+    map[char]++;
   }
-
-  let mostFrequent = null;
   for (let char of str) {
-    if (mostFrequent === null || map[char] > map[mostFrequent]) {
-      mostFrequent = char;
+    if (map[char] > map[mostFrequentChar] || mostFrequentChar === null) {
+      mostFrequentChar = char;
     }
   }
 
-  return mostFrequent;
+  return mostFrequentChar;
 };
+
+// const mostFrequent = (str) => {
+//   let map = {};
+//   for (let char of str) {
+//     if (!map[char]) {
+//       map[char] = 0;
+//     }
+//     map[char]++;
+//   }
+
+//   let mostFrequentChar = null;
+//   for (let char of str) {
+//     if (map[char] > map[mostFrequentChar] || mostFrequentChar === null) {
+//       mostFrequentChar = char;
+//     }
+//   }
+
+//   return mostFrequentChar;
+// };
+
+// const mostFrequentChar = (str) => {
+//   let map = {};
+
+//   for (let char of str) {
+//     if (!map[char]) {
+//       map[char] = 0; // initialize at 0
+//     }
+//     map[char] += 1; // immmediately increment it.
+//   }
+
+//   let mostFrequent = null;
+//   for (let char of str) {
+//     if (mostFrequent === null || map[char] > map[mostFrequent]) {
+//       mostFrequent = char;
+//     }
+//   }
+
+//   return mostFrequent;
+// };
 
 // 01/03/22
 
@@ -90,4 +129,4 @@ const mostFrequentChar = (str) => {
 //   return mostFrequent;
 // };
 
-console.log(mostFrequentChar("bookeepppppper")); // 'p'
+console.log(mostFrequent("bookeepppppper")); // 'p'

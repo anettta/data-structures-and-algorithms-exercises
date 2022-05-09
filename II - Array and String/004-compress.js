@@ -10,26 +10,71 @@
 // Strings in JS are immutable thus strings are copied over
 // using array instead
 
-// 01/20/21
 const compress = (str) => {
-  let result = [];
+  let compressed = [];
   let i = 0;
   let j = 0;
   while (j <= str.length) {
     if (str[j] === str[i]) {
       j++;
     } else {
-      let num = j - i;
+      let num = Number(j - i);
       if (num === 1) {
-        result.push(str[i]);
+        compressed.push(str[i]);
       } else {
-        result.push(num, str[i]);
+        compressed.push(num, str[i]);
       }
       i = j;
     }
   }
-  return result.join("");
+
+  return compressed.join("");
 };
+
+// const compress = (str) => {
+//   let i = 0;
+//   let j = 0;
+//   let result = [];
+
+//   while (j <= str.length) {
+//     if (str[i] === str[j]) {
+//       j++;
+//     } else {
+//       let num = j - i;
+
+//       if (num === 1) {
+//         result.push(str[i]);
+//       } else {
+//         result.push(num);
+//         result.push(str[i]);
+//       }
+
+//       i = j;
+//     }
+//   }
+//   return result.join("");
+// };
+
+// 01/20/21
+// const compress = (str) => {
+//   let result = [];
+//   let i = 0;
+//   let j = 0;
+//   while (j <= str.length) {
+//     if (str[j] === str[i]) {
+//       j++;
+//     } else {
+//       let num = j - i;
+//       if (num === 1) {
+//         result.push(str[i]);
+//       } else {
+//         result.push(num, str[i]);
+//       }
+//       i = j;
+//     }
+//   }
+//   return result.join("");
+// };
 // 01/03/22
 // const compress = (str) => {
 //   let i = 0;

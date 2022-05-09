@@ -12,17 +12,32 @@
 const fiveSort = (nums) => {
   let i = 0;
   let j = nums.length - 1;
-  while (i <= j)
+  while (i <= j) {
     if (nums[i] === 5 && nums[j] !== 5) {
       [nums[i], nums[j]] = [nums[j], nums[i]];
-      i++;
     } else if (nums[i] !== 5) {
       i++;
     } else if (nums[j] === 5) {
       j--;
     }
+  }
   return nums;
 };
+
+// const fiveSort = (nums) => {
+//   let i = 0;
+//   let j = nums.length - 1;
+//   while (i <= j)
+//     if (nums[i] === 5 && nums[j] !== 5) {
+//       [nums[i], nums[j]] = [nums[j], nums[i]];
+//       i++;
+//     } else if (nums[i] !== 5) {
+//       i++;
+//     } else if (nums[j] === 5) {
+//       j--;
+//     }
+//   return nums;
+// };
 
 // 01-03-22
 

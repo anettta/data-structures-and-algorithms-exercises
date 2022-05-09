@@ -18,17 +18,31 @@ class Node {
 //  JavaScript does not have a native queue data structure that is maximally efficient.
 
 const bottomRightValue = (root) => {
-  if (root === null) return root.val;
-  let queue = [root];
-  let current = null;
-  while (queue.length > 0) {
-    current = queue.shift();
+  let bottomRightVal = 0;
+  let stack = [root];
+  while (stack.length !== 0) {
+    let current = stack.pop();
+    bottomRightVal = current.val;
 
-    if (current.left) queue.push(current.left);
-    if (current.right) queue.push(current.right);
+    if (current.right) stack.push(current.right);
+    if (current.left) stack.push(current.left);
   }
-  return current.val;
+
+  return bottomRightVal;
 };
+
+// const bottomRightValue = (root) => {
+//   if (root === null) return root.val;
+//   let queue = [root];
+//   let current = null;
+//   while (queue.length > 0) {
+//     current = queue.shift();
+
+//     if (current.left) queue.push(current.left);
+//     if (current.right) queue.push(current.right);
+//   }
+//   return current.val;
+// };
 
 // const bottomRightValue = (root) => {
 //   let queue = [root];

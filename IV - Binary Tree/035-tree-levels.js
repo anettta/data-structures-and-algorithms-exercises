@@ -20,7 +20,7 @@ const fillLevels = (root, levels, level) => {
   if (levels.length === level) {
     levels.push([root.val]);
   } else {
-    levels[level].push(root.val);
+    levels[level].push(root.val); // additing to existing level
   }
   fillLevels(root.left, levels, level + 1);
   fillLevels(root.right, levels, level + 1);

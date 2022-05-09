@@ -8,19 +8,37 @@
 
 const intersection = (a, b) => {
   let set = new Set();
-  let arr = [];
-  for (let elem of a) {
-    if (!set.has(elem)) {
-      set.add(elem);
+  let sharing = [];
+
+  for (let num of b) {
+    if (!set.has(num)) {
+      set.add(num);
     }
   }
-  for (let elem of b) {
-    if (set.has(elem)) {
-      arr.push(elem);
+
+  for (let num of a) {
+    if (set.has(num)) {
+      sharing.push(num);
     }
   }
-  return arr;
+  return sharing;
 };
+
+// const intersection = (a, b) => {
+//   let set = new Set();
+//   let arr = [];
+//   for (let elem of a) {
+//     if (!set.has(elem)) {
+//       set.add(elem);
+//     }
+//   }
+//   for (let elem of b) {
+//     if (set.has(elem)) {
+//       arr.push(elem);
+//     }
+//   }
+//   return arr;
+// };
 
 // 01/03/22
 

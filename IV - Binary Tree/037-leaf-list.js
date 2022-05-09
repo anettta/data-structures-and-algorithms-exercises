@@ -13,14 +13,25 @@ class Node {
 
 const leafList = (root, leaves = []) => {
   if (root === null) return;
-
   if (root.left === null && root.right === null) {
     leaves.push(root.val);
   }
   leafList(root.left, leaves);
   leafList(root.right, leaves);
+
   return leaves;
 };
+
+// const leafList = (root, leaves = []) => {
+//   if (root === null) return;
+
+//   if (root.left === null && root.right === null) {
+//     leaves.push(root.val);
+//   }
+//   leafList(root.left, leaves);
+//   leafList(root.right, leaves);
+//   return leaves;
+// };
 
 // const leafList = (root) => {
 //   if (root === null) return [];

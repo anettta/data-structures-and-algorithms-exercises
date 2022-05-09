@@ -19,9 +19,14 @@ class Node {
 
 const howHigh = (root) => {
   if (root === null) return -1;
-  let max = Math.max(howHigh(root.left), howHigh(root.right));
-  return 1 + max;
+  return 1 + Math.max(howHigh(root.left), howHigh(root.right));
 };
+
+// const howHigh = (root) => {
+//   if (root === null) return -1;
+//   let max = Math.max(howHigh(root.left), howHigh(root.right));
+//   return 1 + max;
+// };
 
 // Time: O(n)
 // Space: O(n)

@@ -20,6 +20,28 @@ const isPrime = (num) => {
   return true;
 };
 
+// const isPrime = (num) => {
+//   // 6
+//   if (num < 2) return false;
+
+//   for (let i = 2; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
+
+// const isPrime = (num) => {
+//   if (num < 2) return false;
+//   for (let i = 2; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
+
 // 01/03/21
 
 // const isPrime = (n) => {
@@ -54,6 +76,6 @@ const isPrime = (num) => {
 //   return true;
 // };
 
-console.log(isPrime(2)); // true
+console.log(isPrime(7)); // true
 console.log(isPrime(6)); // false
 console.log(isPrime(1)); // false

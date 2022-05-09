@@ -5,6 +5,7 @@
 
 const pairedParentheses = (str) => {
   let count = 0;
+
   for (let char of str) {
     if (char === "(") {
       count++;
@@ -12,12 +13,24 @@ const pairedParentheses = (str) => {
       count--;
     }
   }
-  if (count === 0) {
-    return true;
-  } else {
-    return false;
-  }
+  return count === 0;
 };
+
+// const pairedParentheses = (str) => {
+//   let count = 0;
+//   for (let char of str) {
+//     if (char === "(") {
+//       count++;
+//     } else if (char === ")") {
+//       count--;
+//     }
+//   }
+//   if (count === 0) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
 
 console.log(pairedParentheses("(())")); // true
 console.log(pairedParentheses("((**)")); // false

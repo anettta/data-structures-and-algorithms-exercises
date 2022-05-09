@@ -12,26 +12,69 @@
 // Space: O(n*m)
 
 const uncompress = (str) => {
-  let numbers = "0123456789";
-  let newStr = [];
+  let compressed = [];
   let i = 0;
   let j = 0;
-
+  let numbers = "0123456789";
   while (j < str.length) {
     if (numbers.includes(str[j])) {
       j++;
     } else {
       let num = Number(str.slice(i, j));
       for (let i = 0; i < num; i++) {
-        newStr.push(str[j]);
+        compressed.push(str[j]);
       }
       j++;
       i = j;
     }
   }
 
-  return newStr.join("");
+  return compressed.join("");
 };
+
+// const uncompress = (str) => {
+//   let uncompressed = [];
+//   let numbers = "0123456789";
+//   let i = 0;
+//   let j = 0;
+
+//   while (j < str.length) {
+//     if (numbers.includes([str[j]])) {
+//       j++;
+//     } else {
+//       let num = Number(str.slice(i, j));
+
+//       for (let i = 0; i < num; i++) {
+//         uncompressed.push(str[j]);
+//       }
+//       j++;
+//       i = j;
+//     }
+//   }
+//   return uncompressed.join("");
+// };
+
+// const uncompress = (str) => {
+//   let numbers = "0123456789";
+//   let newStr = [];
+//   let i = 0;
+//   let j = 0;
+
+//   while (j < str.length) {
+//     if (numbers.includes(str[j])) {
+//       j++;
+//     } else {
+//       let num = Number(str.slice(i, j));
+//       for (let i = 0; i < num; i++) {
+//         newStr.push(str[j]);
+//       }
+//       j++;
+//       i = j;
+//     }
+//   }
+
+//   return newStr.join("");
+// };
 
 // 01/03/22
 
