@@ -10,23 +10,25 @@ class Node {
   }
 }
 
-// const treeSum = (root) => {
-//   let sum = 0;
-//   let stack = [root];
-//   while (stack.length > 0) {
-//     let current = stack.pop();
-//     sum += current.val;
+const treeSum = (root) => {
+  if (root === null) return 0;
+  let left = treeSum(root.left);
+  let right = treeSum(root.right);
+  return root.val + left + right;
+};
 
-//     if (current.right) stack.push(current.right);
-//     if (current.left) stack.push(current.left);
+// const treeSum = (root) => {
+//   if (root === null) return 0;
+//   let queue = [root];
+//   sum = 0;
+//   while (queue.length > 0) {
+//     let current = queue.shift();
+//     sum += current.val;
+//     if (current.left) queue.push(current.left);
+//     if (current.right) queue.push(current.right);
 //   }
 //   return sum;
 // };
-
-const treeSum = (root) => {
-  if (root === null) return 0;
-  return root.val + treeSum(root.right) + treeSum(root.left);
-};
 
 // const treeSum = (root) => {
 //   let sum = 0;

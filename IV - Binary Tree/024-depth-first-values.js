@@ -14,29 +14,11 @@ class Node {
 
 const depthFirstValues = (root) => {
   if (root === null) return [];
-  const left = depthFirstValues(root.left);
-  const right = depthFirstValues(root.right);
+  let left = depthFirstValues(root.left);
+  let right = depthFirstValues(root.right);
   return [root.val, ...left, ...right];
 };
 
-// const depthFirstValues = (root) => {
-//   if (root === null) return null;
-//   let arr = [];
-//   let stack = [root];
-//   while (stack.length > 0) {
-//     let current = stack.pop();
-//     arr.push(current.val);
-
-//     if (current.right) stack.push(current.right);
-//     if (current.left) stack.push(current.left);
-//   }
-//   return arr;
-// };
-
-// 01-05-22
-//
-// iterative
-//
 // const depthFirstValues = (root) => {
 //   if (root === null) return [];
 //   let stack = [root];
@@ -44,55 +26,11 @@ const depthFirstValues = (root) => {
 //   while (stack.length > 0) {
 //     let current = stack.pop();
 //     values.push(current.val);
-
-//     if (current.right) stack.push(current.right);
-//     if (current.left) stack.push(current.left);
+//     if (current.left !== null) stack.push(current.left);
+//     if (current.right !== null) stack.push(current.right);
 //   }
+
 //   return values;
-// };
-//
-//
-// recursive
-//
-// const depthFirstValues = (root) => {
-//   if (root === null) return [];
-//   let leftValues = depthFirstValues(root.left);
-//   let rightValues = depthFirstValues(root.right);
-//   return [root.val, ...leftValues, ...rightValues];
-// };
-
-// Time: O(n)
-// Space: O(n)
-
-// iterative
-//
-// const depthFirstValues = (root) => {
-// if(root === null) return [];
-//   let stack = [root];
-//   // a, b, d, e, c, f
-//   let result = [];
-//   while (stack.length > 0) {
-//     let current = stack.pop();
-//     result.push(current.val);
-
-//     if (current.right) {
-//       stack.push(current.right);
-//     }
-//     if (current.left) {
-//       stack.push(current.left);
-//     }
-//   }
-//   return result;
-// };
-//
-//
-// recursive
-//
-// const depthFirstValues = (root) => {
-//   if (root === null) return [];
-//   const leftValues = depthFirstValues(root.left);
-//   const rightValues = depthFirstValues(root.right);
-//   return [root.val, ...leftValues, ...rightValues];
 // };
 
 const a = new Node("a");

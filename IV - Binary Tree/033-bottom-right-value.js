@@ -18,18 +18,30 @@ class Node {
 //  JavaScript does not have a native queue data structure that is maximally efficient.
 
 const bottomRightValue = (root) => {
-  let bottomRightVal = 0;
-  let stack = [root];
-  while (stack.length !== 0) {
-    let current = stack.pop();
-    bottomRightVal = current.val;
-
-    if (current.right) stack.push(current.right);
-    if (current.left) stack.push(current.left);
+  if (root === null) return null;
+  let current = 0;
+  let queue = [root];
+  while (queue.length > 0) {
+    current = queue.shift();
+    if (current.left) queue.push(current.left);
+    if (current.right) queue.push(current.right);
   }
-
-  return bottomRightVal;
+  return current.val;
 };
+
+// const bottomRightValue = (root) => {
+//   let bottomRightVal = 0;
+//   let stack = [root];
+//   while (stack.length !== 0) {
+//     let current = stack.pop();
+//     bottomRightVal = current.val;
+
+//     if (current.right) stack.push(current.right);
+//     if (current.left) stack.push(current.left);
+//   }
+
+//   return bottomRightVal;
+// };
 
 // const bottomRightValue = (root) => {
 //   if (root === null) return root.val;
@@ -65,7 +77,7 @@ const b = new Node(11);
 const c = new Node(10);
 const d = new Node(4);
 const e = new Node(-2);
-const f = new Node(1);
+const f = new Node(9);
 
 a.left = b;
 a.right = c;
@@ -77,6 +89,6 @@ c.right = f;
 //    /    \
 //   11     10
 //  / \      \
-// 4   -2     1
+// 4   -2     9
 
-console.log(bottomRightValue(a)); // -> 1
+console.log(bottomRightValue(a)); // -> 9

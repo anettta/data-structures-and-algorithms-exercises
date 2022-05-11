@@ -11,20 +11,37 @@ class Node {
 }
 
 const treeLevels = (root) => {
+  if (root === null) return [];
   let levels = [];
-  fillLevels(root, levels, 0);
+  let stack = [{ node: root, level: 0 }];
+  while (stack.length > 0) {
+    let { node, level } = stack.pop();
+    if (levels.length === level) {
+      levels.push([node.val]);
+    } else {
+      levels[level].push(node.val);
+    }
+    if (node.left !== null) stack.push({ node: node.left, level: level + 1 });
+    if (node.right !== null) stack.push({ node: node.right, level: level + 1 });
+  }
   return levels;
 };
-const fillLevels = (root, levels, level) => {
-  if (root === null) return;
-  if (levels.length === level) {
-    levels.push([root.val]);
-  } else {
-    levels[level].push(root.val); // additing to existing level
-  }
-  fillLevels(root.left, levels, level + 1);
-  fillLevels(root.right, levels, level + 1);
-};
+
+// const treeLevels = (root) => {
+//   let levels = [];
+//   fillLevels(root, levels, 0);
+//   return levels;
+// };
+// const fillLevels = (root, levels, level) => {
+//   if (root === null) return;
+//   if (levels.length === level) {
+//     levels.push([root.val]);
+//   } else {
+//     levels[level].push(root.val); // additing to existing level
+//   }
+//   fillLevels(root.left, levels, level + 1);
+//   fillLevels(root.right, levels, level + 1);
+// };
 
 // const treeLevels = (root) => {
 //   if (root === null) return [];

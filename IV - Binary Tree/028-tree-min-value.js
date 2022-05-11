@@ -16,12 +16,16 @@ class Node {
 
 const treeMinValue = (root) => {
   if (root === null) return Infinity;
-  const left = treeMinValue(root.left);
-  const right = treeMinValue(root.right);
-  return Math.min(root.val, left, right);
+  let min = Math.min(
+    root.val,
+    treeMinValue(root.left),
+    treeMinValue(root.right)
+  );
+  return min;
 };
 
 // const treeMinValue = (root) => {
+//   if (root.val === null) return 0;
 //   let min = Infinity;
 //   let stack = [root];
 //   while (stack.length > 0) {

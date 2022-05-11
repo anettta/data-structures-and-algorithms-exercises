@@ -19,27 +19,42 @@ class Node {
 }
 
 const allTreePaths = (root) => {
-  let result = allTreePathsHelper(root);
-  return result === null ? [] : result.reverse();
-};
-
-const allTreePathsHelper = (root) => {
   if (root === null) return [];
-  if (root.left === null && root.right === null) {
-    return [[root.val]];
-  }
+  if (root.left === null && root.right === null) return [[root.val]];
   let paths = [];
-  let leftSubPaths = allTreePathsHelper(root.left);
-  let rightSubPaths = allTreePathsHelper(root.right);
-  for (let subPath of rightSubPaths) {
-    paths.unshift([root.val, ...subPath]);
+  let leftPaths = allTreePaths(root.left);
+  for (let path of leftPaths) {
+    paths.push([root.val, ...path]);
   }
-  for (let subPath of leftSubPaths) {
-    paths.unshift([root.val, ...subPath]);
+  let rightPaths = allTreePaths(root.right);
+  for (let path of rightPaths) {
+    paths.push([root.val, ...path]);
   }
-
   return paths;
 };
+
+// const allTreePaths = (root) => {
+//   let result = allTreePathsHelper(root);
+//   return result === null ? [] : result.reverse();
+// };
+
+// const allTreePathsHelper = (root) => {
+//   if (root === null) return [];
+//   if (root.left === null && root.right === null) {
+//     return [[root.val]];
+//   }
+//   let paths = [];
+//   let leftSubPaths = allTreePathsHelper(root.left);
+//   let rightSubPaths = allTreePathsHelper(root.right);
+//   for (let subPath of rightSubPaths) {
+//     paths.unshift([root.val, ...subPath]);
+//   }
+//   for (let subPath of leftSubPaths) {
+//     paths.unshift([root.val, ...subPath]);
+//   }
+
+//   return paths;
+// };
 
 // DFS recursive
 // Time: ~O(n)
@@ -80,7 +95,7 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-console.log(allTreePathsHelper(a)); // ->
+console.log(allTreePaths(a)); // ->
 // [
 //   [ 'a', 'b', 'd' ],
 //   [ 'a', 'b', 'e' ],

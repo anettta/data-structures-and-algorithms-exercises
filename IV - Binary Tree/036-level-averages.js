@@ -12,8 +12,19 @@ class Node {
 }
 
 const levelAverages = (root) => {
+  if (root === null) return [];
+  let stack = [{ node: root, level: 0 }];
   let levels = [];
-  fillLevels(root, levels, 0);
+  while (stack.length > 0) {
+    const { node, level } = stack.pop();
+    if (levels.length === level) {
+      levels.push([node.val]);
+    } else {
+      levels[level].push(node.val);
+    }
+    if (node.left) stack.push({ node: node.left, level: level + 1 });
+    if (node.right) stack.push({ node: node.right, level: level + 1 });
+  }
   return levels.map(getAvgs);
 };
 
@@ -24,18 +35,32 @@ const getAvgs = (arr) => {
   }
   return sum / arr.length;
 };
-const fillLevels = (root, levels, level) => {
-  if (root === null) return;
 
-  if (levels.length === level) {
-    levels.push([root.val]);
-  } else {
-    levels[level].push(root.val);
-  }
+// const levelAverages = (root) => {
+//   let levels = [];
+//   fillLevels(root, levels, 0);
+//   return levels.map(getAvgs);
+// };
 
-  fillLevels(root.left, levels, level + 1);
-  fillLevels(root.right, levels, level + 1);
-};
+// const getAvgs = (arr) => {
+//   let sum = 0;
+//   for (let num of arr) {
+//     sum += num;
+//   }
+//   return sum / arr.length;
+// };
+// const fillLevels = (root, levels, level) => {
+//   if (root === null) return;
+
+//   if (levels.length === level) {
+//     levels.push([root.val]);
+//   } else {
+//     levels[level].push(root.val);
+//   }
+
+//   fillLevels(root.left, levels, level + 1);
+//   fillLevels(root.right, levels, level + 1);
+// };
 
 // Time: O(n)
 // Space: O(n)

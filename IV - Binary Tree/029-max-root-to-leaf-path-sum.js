@@ -15,14 +15,20 @@ class Node {
 
 const maxPathSum = (root) => {
   if (root === null) return -Infinity;
-  if (root.left === null && root.right === null) return root.val;
-
-  const maxChildPathSum = Math.max(
-    maxPathSum(root.left),
-    maxPathSum(root.right)
-  );
-  return root.val + maxChildPathSum;
+  if (root.left === null && root.right === null) return [root.val];
+  return root.val + Math.max(maxPathSum(root.left), maxPathSum(root.right));
 };
+
+// const maxPathSum = (root) => {
+//   if (root === null) return -Infinity;
+//   if (root.left === null && root.right === null) return root.val;
+
+//   const maxChildPathSum = Math.max(
+//     maxPathSum(root.left),
+//     maxPathSum(root.right)
+//   );
+//   return root.val + maxChildPathSum;
+// };
 
 // const maxPathSum = (root) => {
 //   if (root === null) return -Infinity;

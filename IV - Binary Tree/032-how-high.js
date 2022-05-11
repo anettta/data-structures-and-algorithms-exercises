@@ -19,8 +19,16 @@ class Node {
 
 const howHigh = (root) => {
   if (root === null) return -1;
-  return 1 + Math.max(howHigh(root.left), howHigh(root.right));
+  let left = howHigh(root.left);
+  let right = howHigh(root.right);
+  return 1 + Math.max(left, right);
+  t:;
 };
+
+// const howHigh = (root) => {
+//   if (root === null) return -1;
+//   return 1 + Math.max(howHigh(root.left), howHigh(root.right));
+// };
 
 // const howHigh = (root) => {
 //   if (root === null) return -1;

@@ -12,17 +12,27 @@ class Node {
 }
 
 const treeValueCount = (root, target) => {
-  let count = 0;
-  let stack = [root];
-  while (stack.length !== 0) {
-    let current = stack.pop();
-    if (current.val === target) {
-      count++;
-    }
-    if (current.left) stack.push(current.left);
-    if (current.right) stack.push(current.right);
+  if (root === null) return null;
+  let match = 0;
+  if (root.val === target) {
+    match = 1;
   }
-  return count;
+  let left = treeValueCount(root.left, target);
+  let right = treeValueCount(root.right, target);
+  return match + left + right;
+
+  // let count = 0;
+  // let queue = [root];
+  // if (root === null) return null;
+  // while (queue.length > 0) {
+  //   let current = queue.shift();
+  //   if (current.val === target) {
+  //     count++;
+  //   }
+  //   if (current.left) queue.push(current.left);
+  //   if (current.right) queue.push(current.right);
+  // }
+  // return count;
 };
 
 // const treeValueCount = (root, target) => {
@@ -79,10 +89,10 @@ const treeValueCount = (root, target) => {
 // };
 
 const a = new Node(12);
-const b = new Node(6);
-const c = new Node(6);
+const b = new Node(4);
+const c = new Node(4);
 const d = new Node(4);
-const e = new Node(6);
+const e = new Node(4);
 const f = new Node(12);
 
 a.left = b;
@@ -97,4 +107,4 @@ c.right = f;
 //  / \     \
 // 4   6     12
 
-console.log(treeValueCount(a, 6)); // -> 3
+console.log(treeValueCount(a, 1)); // -> 0
