@@ -6,6 +6,31 @@
 // between the source and destination nodes.
 //
 
+const hasPath = (graph, src, dst) => {
+  if (src === dst) return true;
+
+  for (let neighbor of graph[src]) {
+    if (hasPath(graph, neighbor, dst) === true) {
+      return true;
+    }
+  }
+  return false;
+};
+
+// const hasPath = (graph, src, dst) => {
+//   if (src === dst) return true;
+//   let queue = [src];
+//   while (queue.length > 0) {
+//     let current = queue.shift();
+
+//     if (current === dst) return true;
+//     for (let neighbor of graph[current]) {
+//       queue.push(neighbor);
+//     }
+//   }
+//   return false;
+// };
+
 // DFS - recursive
 
 // const hasPath = (graph, src, dst) => {
@@ -20,17 +45,17 @@
 
 // BFS - iterative
 
-const hasPath = (graph, src, dst) => {
-  let queue = [src];
-  while (queue.length > 0) {
-    let current = queue.shift();
-    if (current === dst) return true;
-    for (let neighbor of graph[current]) {
-      queue.push(neighbor);
-    }
-  }
-  return false;
-};
+// const hasPath = (graph, src, dst) => {
+//   let queue = [src];
+//   while (queue.length > 0) {
+//     let current = queue.shift();
+//     if (current === dst) return true;
+//     for (let neighbor of graph[current]) {
+//       queue.push(neighbor);
+//     }
+//   }
+//   return false;
+// };
 //
 // Iterative - DFS
 // const hasPath = (graph, src, dst) => {
