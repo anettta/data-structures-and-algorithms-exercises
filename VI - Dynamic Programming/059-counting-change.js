@@ -14,18 +14,32 @@
 // Space: O(a*c)
 
 const countingChange = (amount, coins, i = 0, memo = {}) => {
-  if (amount === 0) return 1;
-  const key = amount + "," + i;
+  let key = amount + "," + i;
   if (key in memo) return memo[key];
-
-  const coin = coins[i];
+  if (amount === 0) return 1;
+  let coin = coins[i];
   let total = 0;
-  for (let qty = 0; qty * coin <= amount; qty++) {
-    total += countingChange(amount - qty * coin, coins, i + 1, memo);
+  for (let qty = 0; coin * qty <= amount; qty++) {
+    let remainder = amount - coin * qty;
+    total += countingChange(remainder, coins, i + 1, memo);
   }
   memo[key] = total;
-  return total;
+  return memo[key];
 };
+
+// const countingChange = (amount, coins, i = 0, memo = {}) => {
+//   if (amount === 0) return 1;
+//   const key = amount + "," + i;
+//   if (key in memo) return memo[key];
+
+//   const coin = coins[i];
+//   let total = 0;
+//   for (let qty = 0; qty * coin <= amount; qty++) {
+//     total += countingChange(amount - qty * coin, coins, i + 1, memo);
+//   }
+//   memo[key] = total;
+//   return total;
+// };
 
 // const countingChange = (amt, coins, i = 0, memo = {}) => {
 //   const key = amt + "," + i;

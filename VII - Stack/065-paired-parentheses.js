@@ -2,6 +2,7 @@
 // a string as an argument.
 // the function should return a boolean indicating whether
 // or not the string has well-formed parentheses.
+//
 
 const pairedParentheses = (str) => {
   let count = 0;

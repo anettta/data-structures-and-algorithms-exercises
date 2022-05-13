@@ -6,27 +6,35 @@
 const befittingBrackets = (str) => {
   const brackets = {
     "(": ")",
-    "[": "]",
     "{": "}",
+    "[": "]",
   };
-  let stack = [];
-  for (let char of str) {
-    if (char in brackets) {
-      stack.push(brackets[char]);
-    } else {
-      if (stack.length > 0 && stack[stack.length - 1] === char) {
-        stack.pop();
-      } else {
-        return false;
-      }
-    }
-  }
-  if (stack.length === 0) {
-    return true;
-  } else {
-    return false;
-  }
 };
+
+// const befittingBrackets = (str) => {
+//   const brackets = {
+//     "(": ")",
+//     "[": "]",
+//     "{": "}",
+//   };
+//   let stack = [];
+//   for (let char of str) {
+//     if (char in brackets) {
+//       stack.push(brackets[char]);
+//     } else {
+//       if (stack.length > 0 && stack[stack.length - 1] === char) {
+//         stack.pop();
+//       } else {
+//         return false;
+//       }
+//     }
+//   }
+//   if (stack.length === 0) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
 
 // const befittingBrackets = (str) => {
 //   let stack = [];

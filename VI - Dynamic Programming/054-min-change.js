@@ -9,22 +9,39 @@
 //
 
 const minChange = (amount, coins) => {
-  const result = minimumChange(amount, coins);
+  let result = _minChange(amount, coins);
   return result === Infinity ? -1 : result;
 };
-
-const minimumChange = (amount, coins, memo = {}) => {
+const _minChange = (amount, coins, memo = {}) => {
+  if (amount in memo) return memo[amount];
   if (amount === 0) return 0;
   if (amount < 0) return Infinity;
-  if (amount in memo) return memo[amount];
-  let min = Infinity;
+  let minCoins = Infinity;
   for (let coin of coins) {
-    const numCoins = 1 + minimumChange(amount - coin, coins, memo);
-    if (numCoins < min) min = numCoins;
+    let currentMinCoins = 1 + _minChange(amount - coin, coins, memo);
+    minCoins = Math.min(currentMinCoins, minCoins);
   }
-  memo[amount] = min;
-  return min;
+  memo[amount] = minCoins;
+  return minCoins;
 };
+
+// const minChange = (amount, coins) => {
+//   const result = minimumChange(amount, coins);
+//   return result === Infinity ? -1 : result;
+// };
+
+// const minimumChange = (amount, coins, memo = {}) => {
+//   if (amount === 0) return 0;
+//   if (amount < 0) return Infinity;
+//   if (amount in memo) return memo[amount];
+//   let min = Infinity;
+//   for (let coin of coins) {
+//     const numCoins = 1 + minimumChange(amount - coin, coins, memo);
+//     if (numCoins < min) min = numCoins;
+//   }
+//   memo[amount] = min;
+//   return min;
+// };
 
 // const minChange = (amt, coins) => {
 //   const answer = _minChange(amt, coins);

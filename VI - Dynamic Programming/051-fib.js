@@ -10,14 +10,23 @@
 // Time: O(n)
 // Space: O(n)
 
-const fib = (num, memo = {}) => {
-  if (num in memo) return memo[num];
-  if (num === 0) return 0;
-  if (num === 1) return 1;
+const fib = (n, memo = {}) => {
+  if (n in memo) return memo[n];
+  if (n === 0) return 0;
+  if (n === 1) return 1;
 
-  memo[num] = fib(num - 1, memo) + fib(num - 2, memo);
-  return memo[num];
+  memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
+  return memo[n];
 };
+
+// const fib = (num, memo = {}) => {
+//   if (num in memo) return memo[num];
+//   if (num === 0) return 0;
+//   if (num === 1) return 1;
+
+//   memo[num] = fib(num - 1, memo) + fib(num - 2, memo);
+//   return memo[num];
+// };
 
 // const fib = (n, memo = {}) => {
 //   if (n === 0 || n === 1) return n;
