@@ -16,17 +16,17 @@
 //
 
 const arrayStepper = (nums, i = 0, memo = {}) => {
-  if (i >= nums.length - 1) return true;
   if (i in memo) return memo[i];
+  if (i >= nums.length - 1) return true;
   let maxStep = nums[i];
   for (let step = 1; step <= maxStep; step++) {
     if (arrayStepper(nums, i + step, memo) === true) {
       memo[i] = true;
-      return true;
+      return memo[i];
     }
   }
   memo[i] = false;
-  return false;
+  return memo[i];
 };
 
 // const arrayStepper = (numbers, i = 0, memo = {}) => {
