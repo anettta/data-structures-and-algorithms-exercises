@@ -8,11 +8,11 @@ class Node {
 
 const flipTree = (root) => {
   if (root === null) return null;
-  const right = flipTree(root.right);
-  const left = flipTree(root.left);
+
+  let left = flipTree(root.left);
+  let right = flipTree(root.right);
   root.left = right;
   root.right = left;
-
   return root;
 };
 

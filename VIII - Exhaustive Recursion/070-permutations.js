@@ -2,17 +2,20 @@
 // you can generate n! different permutations.
 
 const permutations = (arr) => {
-  if (arr.length === 0) return [[]]; // single permutation
+  if (arr.length === 0) return [[]];
 
-  const fullPermutation = [];
-  const first = arr[0];
-  for (let perm of permutations(arr.slice(1))) {
+  let first = arr[0];
+  let rest = permutations(arr.slice(1));
+
+  let allPermutations = [];
+
+  for (let perm of rest) {
     for (let i = 0; i <= perm.length; i++) {
-      fullPermutation.push([...perm.slice(0, i), first, ...perm.slice(i)]);
+      allPermutations.push([...perm.slice(0, i), first, ...perm.slice(i)]);
     }
   }
 
-  return fullPermutation;
+  return allPermutations;
 };
 console.log(permutations(["a", "b", "c"]));
 

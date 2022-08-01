@@ -10,19 +10,31 @@ class Node {
 }
 
 const linkedPalindrome = (head) => {
+  let values = [];
   let current = head;
-  let arr = [];
-  let reversed = [];
+
   while (current !== null) {
-    arr.push(current.val);
+    values.push(current.val);
     current = current.next;
   }
-  for (let i = arr.length - 1; i >= 0; i--) {
-    reversed.push(arr[i]);
-  }
 
-  return arr.join(",") === reversed.join(",") ? true : false;
+  return values === values.reverse();
 };
+
+// const linkedPalindrome = (head) => {
+//   let current = head;
+//   let arr = [];
+//   let reversed = [];
+//   while (current !== null) {
+//     arr.push(current.val);
+//     current = current.next;
+//   }
+//   for (let i = arr.length - 1; i >= 0; i--) {
+//     reversed.push(arr[i]);
+//   }
+
+//   return arr.join(",") === reversed.join(",") ? true : false;
+// };
 
 const a = new Node(3);
 const b = new Node(2);

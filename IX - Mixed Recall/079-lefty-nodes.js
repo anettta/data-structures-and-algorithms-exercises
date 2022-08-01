@@ -8,19 +8,33 @@ class Node {
 
 const leftyNodes = (root) => {
   let values = [];
-
   const traverse = (root, level) => {
     if (root === null) return;
     if (values.length === level) {
       values.push(root.val);
     }
-    traverse(root.right, level++);
-    traverse(root.left, level++);
+    traverse(root.left, level + 1);
+    traverse(root.right, level + 1);
   };
-
   traverse(root, 0);
   return values;
 };
+
+// const leftyNodes = (root) => {
+//   let values = [];
+
+//   const traverse = (root, level) => {
+//     if (root === null) return;
+//     if (values.length === level) {
+//       values.push(root.val);
+//     }
+//     traverse(root.right, level++);
+//     traverse(root.left, level++);
+//   };
+
+//   traverse(root, 0);
+//   return values;
+// };
 
 // const leftyNodes = (root) => {
 //   let values = [];

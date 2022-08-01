@@ -3,16 +3,24 @@
 // The function should return a boolean indicating
 // whether or not the string contains correctly matched brackets.
 
+const befittingBrackets = (str) => {
+  let brackets = {
+    "[": "]",
+    "{": "}",
+    "(": ")",
+  };
 
+  let stack = [];
 
-
-
-
-
-
-
-
-
+  for (let char of str) {
+    if (char in brackets) {
+      stack.push(brackets[char]);
+    } else if (stack[stack.length - 1] === char && stack.length > 0) {
+      stack.pop();
+    }
+  }
+  return stack.length === 0;
+};
 
 // const befittingBrackets = (str) => {
 //   const brackets = {

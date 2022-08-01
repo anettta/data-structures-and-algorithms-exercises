@@ -1,12 +1,14 @@
 const subsets = (elements) => {
-  if (elements.length === 0) return [[]]; // we need to include an empty array
-  let first = elements[0];
-  const subWithoutFirst = subsets(elements.slice(1)); // [[], [b], [c], [b,c]]
-  const subWithFirst = [];
-  for (let sub of subWithoutFirst) {
-    subWithFirst.push([first, ...sub]);
+  if (elements.length === 0) return [[]];
+
+  let firstEl = elements[0];
+  let elWithoutFirst = subsets(elements.slice(1));
+  let elWithFirst = [];
+
+  for (let sub of elWithoutFirst) {
+    elWithFirst.push([...sub, firstEl]);
   }
-  return [...subWithFirst, ...subWithoutFirst];
+  return [...elWithoutFirst, ...elWithFirst];
 };
 
 console.log(subsets(["a", "b", "c"]));
