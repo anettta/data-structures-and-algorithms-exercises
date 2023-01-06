@@ -10,99 +10,14 @@
 // Space: O(n)
 
 const pairSum = (arr, target) => {
-  let map = {};
+  let obj = {};
   for (let i = 0; i < arr.length; i++) {
     let complement = target - arr[i];
-
-    if (complement in map) {
-      return [map[complement], i];
+    if (complement in obj) {
+      return [obj[complement], i];
     }
-    map[arr[i]] = i;
+    obj[arr[i]] = i;
   }
 };
-
-// const pairSum = (arr, target) => {
-//   let map = {};
-//   for (let i = 0; i < arr.length; i++) {
-//     let complement = target - arr[i];
-//     if (complement in map) {
-//       return [map[complement], i];
-//     }
-//     map[arr[i]] = i;
-//   }
-// };
-
-// const pairSum = (arr, target) => {
-//   let map = {};
-
-//   for (let i = 0; i < arr.length; i++) {
-//     let complement = target - arr[i];
-
-//     if (complement in map) {
-//       return [map[complement], i];
-//     }
-
-//     map[arr[i]] = i;
-//   }
-// };
-
-// 01/03/22
-
-// const pairSum = (arr, target) => {
-//   let map = {};
-//   for (let i = 0; i < arr.length; i++) {
-//     let complement = target - arr[i];
-//     if (complement in map) {
-//       return [map[complement], i];
-//     }
-
-//     map[arr[i]] = i;
-//   }
-// };
-
-// 12-17-21
-
-// const pairSum = (arr, target) => {
-//   let map = {};
-
-//   for (let i = 0; i < arr.length; i++) {
-//     let elem = arr[i];
-//     // map = [elem, i];
-//     let complement = target - elem;
-//     if (complement in map) {
-//       return [map[complement], i];
-//     }
-
-//     map[elem] = i;
-//   }
-// };
-
-// const pairSum = (arr, target) => {
-//   // brute force Time: O(n^2) and Space: O(1)
-//   //   for (let i = 0; i < arr.length; i++) {
-//   //     for (let j = i + 1; j < arr.length; j++) {
-//   //       if (arr[i] + arr[j] === target) {
-//   //         return [i, j];
-//   //       }
-//   //     }
-//   //     return -1;
-//   //   }
-//   // Time: O(n)
-//   // Space: O(n)
-
-//   let map = {};
-//   for (let i = 0; i < arr.length; i++) {
-//     let num = arr[i];
-//     let complement = target - num;
-
-//     // key in object
-//     if (complement in map) {
-//       //   console.log(map[complement], complement, i, arr[i]);
-//       return [map[complement], i];
-//     }
-//     // num's index is i
-//     map[num] = i;
-//   }
-// };
 
 console.log(pairSum([3, 2, 5, 4, 1], 8)); // [0,2]

@@ -8,66 +8,15 @@
 // There is guaranteed to be one such pair whose product is the target.
 
 const pairProduct = (arr, target) => {
-  let map = {};
+  let obj = {};
 
   for (let i = 0; i < arr.length; i++) {
     let complement = target / arr[i];
-    if (complement in map) {
-      return [map[complement], i];
+    if (complement in obj) {
+      return [obj[complement], i];
     }
-    map[arr[i]] = i;
+    obj[arr[i]] = i;
   }
 };
-
-// const pairProduct = (arr, target) => {
-//   let map = {};
-//   for (let i = 0; i < arr.length; i++) {
-//     let complement = target / arr[i];
-//     if (complement in map) {
-//       return [map[complement], i];
-//     }
-//     map[arr[i]] = i;
-//   }
-// };
-
-// 01/03/22
-
-// const pairProduct = (arr, target) => {
-//   let map = {};
-//   for (let i = 0; i < arr.length; i++) {
-//     let num = arr[i];
-//     let complement = target / num;
-//     if (map[complement]) {
-//       return [map[complement], i];
-//     }
-//     map[num] = i;
-//   }
-// };
-
-// 12-17-21
-
-// const pairProduct = (arr, target) => {
-//   let map = {};
-//   for (let i = 0; i < arr.length; i++) {
-//     let num = arr[i];
-//     let complement = target / num;
-//     if (complement in map) {
-//       return [map[complement], i];
-//     }
-//     map[num] = i;
-//   }
-// };
-
-// const pairProduct = (arr, target) => {
-//   let map = {};
-//   for (let i = 0; i < arr.length; i++) {
-//     let num = arr[i];
-//     let complement = target / num;
-//     if (map[complement]) {
-//       return [map[complement], i];
-//     }
-//     map[num] = i;
-//   }
-// };
 
 console.log(pairProduct([3, 2, 5, 4, 1], 8)); // [1,3]
