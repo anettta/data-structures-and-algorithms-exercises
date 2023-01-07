@@ -11,93 +11,25 @@ class Node {
     this.next = null;
   }
 }
-
+//iterative
+// const isUnivalueList = (head) => {
+//   let current = head;
+//   while (current !== null) {
+//     if (current.val !== head.val) {
+//       return false;
+//     }
+//     current = current.next;
+//   }
+//   return true;
+// };
+//recursive
 const isUnivalueList = (head, prev = null) => {
   if (head === null) return true;
   if (head.val !== prev && prev !== null) return false;
-  return isUnivalueList(head.next, head.val);
-  // let current = head;
-  // while (current !== null) {
-  //   if (current.val !== head.val) {
-  //     return false;
-  //   }
-  //   current = current.next;
-  // }
-  // return true;
+  let next = head.next;
+
+  return isUnivalueList(next, head.val);
 };
-
-// const isUnivalueList = (head) => {
-//   let current = head;
-//   while (current !== null) {
-//     if (current.val !== head.val) {
-//       return false;
-//     }
-//     current = current.next;
-//   }
-//   return true;
-// };
-
-// const isUnivalueList = (head, prev = null) => {
-//   if (head === null) return true;
-//   if (prev !== null && head.val !== prev) return false;
-//   return isUnivalueList(head.next, head.val);
-// };
-
-// const isUnivalueList = (head) => {
-//   let current = head;
-//   while (current !== null) {
-//     if (current.val !== head.val) {
-//       return false;
-//     }
-//     current = current.next;
-//   }
-//   return true;
-// };
-
-// const isUnivalueList = (head, prev = null) => {
-//   if (head === null) return true;
-//   if (head.val !== prev && prev !== null) return false;
-
-//   return isUnivalueList(head.next, head.val);
-// };
-
-// const isUnivalueList = (head) => {
-//   let current = head;
-
-//   while (current !== null) {
-//     if (current.val !== head.val) {
-//       return false;
-//     }
-//     current = current.next;
-//   }
-//   return true;
-// };
-
-//
-// iterative
-//
-// const isUnivalueList = (head) => {
-//   let current = head;
-//   while (current !== null) {
-//     if (current.val !== head.val) {
-//       return false;
-//     }
-//     current = current.next;
-//   }
-//   return true;
-// };
-//
-// recursive
-//
-// const isUnivalueList = (head, prevVal = null) => {
-//   if (head === null) {
-//     return true;
-//   }
-//   if (prevVal !== null && head.val !== prevVal) {
-//     return false;
-//   }
-//   return isUnivalueList(head.next, head.val);
-// };
 
 const a = new Node(1);
 const b = new Node(1);

@@ -9,131 +9,27 @@ class Node {
   }
 }
 
+// iterative
+// const reverseList = (head) => {
+//   let current = head;
+//   let prev = null;
+//   while (current !== null) {
+//     let next = current.next;
+//     current.next = prev;
+//     prev = current;
+//     current = next;
+//   }
+//   return prev;
+// };
+
+// recursive
 const reverseList = (head, prev = null) => {
   if (head === null) return prev;
   let next = head.next;
   head.next = prev;
+
   return reverseList(next, head);
-  // let prev = null;
-  // let current = head;
-  // while (current !== null) {
-  //   let next = current.next;
-  //   current.next = prev;
-  //   prev = current;
-  //   current = next;
-  // }
-
-  // return prev;
 };
-
-// const reverseList = (head) => {
-//   let current = head;
-//   let prev = null;
-//   while (current !== null) {
-//     let next = current.next;
-//     current.next = prev;
-//     prev = current;
-//     current = next;
-//   }
-//   return prev;
-// };
-
-// const reverseList = (head, prev = null) => {
-//   if (head === null) return prev;
-//   let next = head.next;
-//   head.next = prev;
-//   return reverseList(next, head);
-// };
-
-// 01/04/22
-//
-// iterative
-//
-// const reverseList = (head) => {
-//   let prev = null;
-//   let current = head;
-//   while (current !== null) {
-//     let next = current.next;
-//     current.next = prev;
-//     prev = current;
-//     current = next;
-//   }
-//   return prev;
-// };
-//
-// recursive
-//
-// const reverseList = (head, prev = null) => {
-//   if (head === null) return prev;
-//   let next = head.next;
-//   head.next = prev;
-//   return reverseList(next, head);
-// };
-
-// 12-24-21
-
-// const reverseList = (head) => {
-//   let prev = null;
-//   let current = head;
-//   while (current) {
-//     let next = current.next;
-//     current.next = prev;
-//     prev = current;
-//     current = next;
-//   }
-//   return prev;
-// };
-
-// 12-20-21
-
-// const reverseList = (head) => {
-//   let current = head;
-//   let prev = null;
-
-//   while (current) {
-//     let next = current.next;
-//     current.next = prev;
-//     prev = current;
-
-//     current = next;
-//   }
-
-//   return prev;
-// };
-
-// const reverseList = (head, prev = null) => {
-//   if (head === null) return null;
-//   let next = head.next;
-//   head.next = prev;
-
-//   return reverseList(next, head);
-// };
-
-//
-// iterative
-//
-// const reverseList = (head) => {
-//   let current = head;
-//   let prev = null;
-//   while (current !== null) {
-//     let next = current.next; // save next pointer
-//     current.next = prev; // points to null; current's arrow that points to the next
-//     prev = current;
-//     current = next;
-//   }
-//   return prev;
-// };
-//
-// recursive
-//
-// const reverseList = (head, prev = null) => {
-//   if (head === null) {
-//     return prev;
-//   }
-//   const next = head.next;
-//   head.next = prev;
-//   return reverseList(next, head);
-// };
 
 const a = new Node("a");
 const b = new Node("b");

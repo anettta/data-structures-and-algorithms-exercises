@@ -9,101 +9,24 @@ class Node {
   }
 }
 
-const linkedListFund = (head, target) => {
+// iterative
+// const linkedListFind = (head, target) => {
+//   let current = head;
+//   while (current !== null) {
+//     if (current.val === target) {
+//       return true;
+//     }
+//     current = current.next;
+//   }
+//   return false;
+// };
+
+// recursive
+const linkedListFind = (head, target) => {
   if (head === null) return false;
   if (head.val === target) return true;
-  return linkedListFund(head.next, target);
-  // let current = head;
-  // while (current !== null) {
-  //   if (current.val === target) return true;
-  //   current = current.next;
-  // }
-  // return false;
+  return linkedListFind(head.next, target);
 };
-
-// const linkedListFund = (head, target) => {
-//   let current = head;
-//   while (current !== null) {
-//     if (current.val === target) {
-//       return true;
-//     }
-//     current = current.next;
-//   }
-//   return false;
-// };
-
-// const linkedListFund = (head, target) => {
-//   if (head === null) return false;
-//   if (head.val === target) return true;
-//   return linkedListFund(head.next, target);
-// };
-
-// 01/04/22
-//
-// iterative
-//
-// const linkedListFund = (head, target) => {
-//   if (head.val === target) return true;
-//   let current = head;
-//   while (current !== null) {
-//     if (current.val === target) return true;
-//     current = current.next;
-//   }
-//   return false;
-// };
-//
-// recursive
-//
-// const linkedListFund = (head, target) => {
-//   if (head === null) return false;
-//   if (head.val === target) return true;
-
-//   return linkedListFund(head.next, target);
-// };
-
-// 12-20-21
-
-// const linkedListFund = (head, target) => {
-//   let current = head;
-//   while (current) {
-//     if (current.val === target) {
-//       return true;
-//     }
-//     current = current.next;
-//   }
-//   return false;
-// };
-// const linkedListFund = (head, target) => {
-//   if (head === null) return false;
-//   if (head.val === target) return true;
-//   return linkedListFund(head.next, target);
-// };
-
-//                           iterative
-//
-// const linkedListFund = (head, target) => {
-//   let current = head;
-//   while (current !== null) {
-//     if (current.val === target) {
-//       return true;
-//     }
-//     current = current.next;
-//   }
-//   return false;
-// };
-//
-//                          recursive
-//
-// const linkedListFund = (head, target) => {
-//   if (head === null) {
-//     // empty list or end of linked list
-//     return false;
-//   }
-//   if (head.val === target) {
-//     return true;
-//   }
-//   return linkedListFund(head.next, target);
-// };
 
 const a = new Node("a");
 const b = new Node("b");
@@ -114,5 +37,5 @@ a.next = b;
 b.next = c;
 c.next = d;
 
-console.log(linkedListFund(a, "c")); // true
-console.log(linkedListFund(a, "x")); // false
+console.log(linkedListFind(a, "c")); // true
+console.log(linkedListFind(a, "x")); // false
