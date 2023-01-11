@@ -8,68 +8,25 @@ class Node {
     this.next = null;
   }
 }
+// iterative
+// const createLinkedList = (values) => {
+//   let dummyNode = new Node(null);
+//   let tail = dummyNode;
+//   for (let val of values) {
+//     let newNode = new Node(val);
+//     tail.next = newNode;
 
+//     tail = tail.next;
+//   }
+
+//   return dummyNode.next;
+// };
+// recursive
 const createLinkedList = (values, i = 0) => {
-  if (i === values.length) return null;
-  let head = new Node(values[i]);
+  if (values.length === i) return null;
+  const head = new Node(values[i]);
   head.next = createLinkedList(values, i + 1);
   return head;
 };
-
-// const createLinkedList = (values, i = 0) => {
-//   if (i === values.length) return null;
-//   let head = new Node(values[i]);
-//   head.next = createLinkedList(values, i + 1);
-//   return head;
-// };
-
-// const createLinkedList = (values) => {
-//   let dummyHead = new Node(null);
-//   let tail = dummyHead;
-//   for (let val of values) {
-//     tail.next = new Node(val);
-//     tail = tail.next;
-//   }
-//   return dummyHead.next;
-// };
-
-// const createLinkedList = (values) => {
-//   let dummyHead = new Node(null);
-//   let tail = dummyHead;
-
-//   for (let val of values) {
-//     tail.next = new Node(val);
-//     tail = tail.next;
-//   }
-
-//   return dummyHead.next;
-// };
-
-//
-// recursive
-//
-// const createLinkedList = (array, i = 0) => {
-//   if (i === array.length) {
-//     return null;
-//   }
-//   const head = new Node(array[i]);
-//   head.next = createLinkedList(array, i + 1);
-//   return head;
-// };
-//
-// iterative
-//
-// const createLinkedList = (array) => {
-//   let dummy = new Node(null);
-//   let tail = dummy;
-
-//   for (let element of array) {
-//     let newNode = new Node(element);
-//     tail.next = newNode;
-//     tail = tail.next;
-//   }
-
-//   return dummy.next;
-// };
 
 console.log(createLinkedList(["h", "e", "y"])); // h -> e -> y
