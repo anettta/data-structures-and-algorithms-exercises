@@ -12,8 +12,8 @@ class Node {
 }
 
 const breadthFirstValues = (root) => {
-  let values = [];
   let queue = [root];
+  let values = [];
   while (queue.length > 0) {
     let current = queue.shift();
     values.push(current.val);

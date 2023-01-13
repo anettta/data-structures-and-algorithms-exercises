@@ -11,24 +11,26 @@ class Node {
   }
 }
 
+//
+// iterative solution
+//
 const levelAverages = (root) => {
-  if (root === null) return [];
-  let stack = [{ node: root, level: 0 }];
   let levels = [];
-  while (stack.length > 0) {
-    const { node, level } = stack.pop();
+  let queue = [{ node: root, level: 0 }];
+  while (queue.length > 0) {
+    const { node, level } = queue.shift();
     if (levels.length === level) {
       levels.push([node.val]);
     } else {
       levels[level].push(node.val);
     }
-    if (node.left) stack.push({ node: node.left, level: level + 1 });
-    if (node.right) stack.push({ node: node.right, level: level + 1 });
+    if (node.left) queue.push({ node: node.left, level: level + 1 });
+    if (node.right) queue.push({ node: node.right, level: level + 1 });
   }
-  return levels.map(getAvgs);
+  return levels.map(avgs);
 };
 
-const getAvgs = (arr) => {
+const avgs = (arr) => {
   let sum = 0;
   for (let num of arr) {
     sum += num;
@@ -36,68 +38,33 @@ const getAvgs = (arr) => {
   return sum / arr.length;
 };
 
+//
+// recursive solution
+//
 // const levelAverages = (root) => {
 //   let levels = [];
-//   fillLevels(root, levels, 0);
-//   return levels.map(getAvgs);
+//   fillValues(root, levels, 0);
+//   return levels.map(avgs);
 // };
 
-// const getAvgs = (arr) => {
+// const fillValues = (root, values, level) => {
+//   if (root === null) return;
+//   if (values.length === level) {
+//     values.push([root.val]);
+//   } else {
+//     values[level].push(root.val);
+//   }
+//   fillValues(root.left, values, level + 1);
+//   fillValues(root.right, values, level + 1);
+// };
+
+// const avgs = (arr) => {
 //   let sum = 0;
 //   for (let num of arr) {
 //     sum += num;
 //   }
 //   return sum / arr.length;
 // };
-// const fillLevels = (root, levels, level) => {
-//   if (root === null) return;
-
-//   if (levels.length === level) {
-//     levels.push([root.val]);
-//   } else {
-//     levels[level].push(root.val);
-//   }
-
-//   fillLevels(root.left, levels, level + 1);
-//   fillLevels(root.right, levels, level + 1);
-// };
-
-// Time: O(n)
-// Space: O(n)
-
-// start recursion
-// const levelAverages = (root) => {
-//   const levels = [];
-//   fillLevels(root, levels, 0);
-//   //   const avgs = [];
-//   //   for (let level of levels) {
-//   //     getAvgs(level);
-//   //     avgs.push(getAvgs(level));
-//   //   }
-//   //   return avgs;
-//   return levels.map(getAvgs);
-// };
-
-// const getAvgs = (array) => {
-//   let sum = 0;
-//   for (let num of array) {
-//     sum += num;
-//   }
-//   return sum / array.length;
-// };
-
-// const fillLevels = (root, levels, levelNum) => {
-//   if (root === null) return;
-
-//   if (levels.length === levelNum) {
-//     levels[levelNum] = [root.val];
-//   } else {
-//     levels[levelNum].push(root.val); // indexing into existing subarray
-//   }
-//   fillLevels(root.left, levels, levelNum + 1);
-//   fillLevels(root.right, levels, levelNum + 1);
-// };
-// end recursion
 
 const a = new Node(3);
 const b = new Node(11);

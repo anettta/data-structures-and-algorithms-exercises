@@ -11,36 +11,25 @@ class Node {
   }
 }
 
-const treeValueCount = (root, target) => {
-  if (root === null) return null;
-  let match = 0;
-  if (root.val === target) {
-    match = 1;
-  }
-  let left = treeValueCount(root.left, target);
-  let right = treeValueCount(root.right, target);
-  return match + left + right;
+// recursive solution
 
-  // let count = 0;
-  // let queue = [root];
-  // if (root === null) return null;
-  // while (queue.length > 0) {
-  //   let current = queue.shift();
-  //   if (current.val === target) {
-  //     count++;
-  //   }
-  //   if (current.left) queue.push(current.left);
-  //   if (current.right) queue.push(current.right);
-  // }
-  // return count;
+const treeValueCount = (root, target) => {
+  if (root === null) return 0;
+
+  let match = root.val === target ? 1 : 0;
+  let sum =
+    treeValueCount(root.left, target) + treeValueCount(root.right, target);
+  return sum + match;
 };
 
+//
+// iterative solution using queue
+//
 // const treeValueCount = (root, target) => {
-//   if (root === null) return 0;
 //   let queue = [root];
 //   let count = 0;
 //   while (queue.length > 0) {
-//     let current = queue.pop();
+//     let current = queue.shift();
 //     if (current.val === target) {
 //       count++;
 //     }
@@ -48,44 +37,6 @@ const treeValueCount = (root, target) => {
 //     if (current.right) queue.push(current.right);
 //   }
 //   return count;
-// };
-
-// const treeValueCount = (root, target, count = 0) => {
-//   if (root === null) return 0;
-//   const match = root.val === target ? 1 : 0;
-
-//   return (
-//     match +
-//     treeValueCount(root.left, target) +
-//     treeValueCount(root.right, target)
-//   );
-// };
-
-// const treeValueCount = (root, target) => {
-//   if (root === null) return 0;
-//   let stack = [root];
-//   let count = 0;
-//   while (stack.length > 0) {
-//     let current = stack.pop();
-//     if (current.val === target) {
-//       count++;
-//     }
-//     if (current.left !== null) stack.push(current.left);
-//     if (current.right !== null) stack.push(current.right);
-//   }
-//   return count;
-// };
-// Time: O(n)
-// Space: O(n)
-// recursively
-// const treeValueCount = (root, target) => {
-//   if (root === null) return 0;
-//   const match = root.val === target ? 1 : 0;
-//   return (
-//     match +
-//     treeValueCount(root.left, target) +
-//     treeValueCount(root.right, target)
-//   );
 // };
 
 const a = new Node(12);
@@ -107,4 +58,4 @@ c.right = f;
 //  / \     \
 // 4   6     12
 
-console.log(treeValueCount(a, 1)); // -> 0
+console.log(treeValueCount(a, 4)); // -> 0

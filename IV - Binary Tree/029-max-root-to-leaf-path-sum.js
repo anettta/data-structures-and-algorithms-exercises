@@ -13,63 +13,15 @@ class Node {
   }
 }
 
+//
+// recursive solution - best for path finding
+//
 const maxPathSum = (root) => {
   if (root === null) return -Infinity;
-  if (root.left === null && root.right === null) return [root.val];
-  return root.val + Math.max(maxPathSum(root.left), maxPathSum(root.right));
+  if (root.left === null && root.right === null) return root.val;
+  let maxChildPathSum = Math.max(maxPathSum(root.left), maxPathSum(root.right));
+  return root.val + maxChildPathSum;
 };
-
-// const maxPathSum = (root) => {
-//   if (root === null) return -Infinity;
-//   if (root.left === null && root.right === null) return root.val;
-
-//   const maxChildPathSum = Math.max(
-//     maxPathSum(root.left),
-//     maxPathSum(root.right)
-//   );
-//   return root.val + maxChildPathSum;
-// };
-
-// const maxPathSum = (root) => {
-//   if (root === null) return -Infinity;
-//   if (root.left === null && root.right === null) return root.val;
-//   let maxChild = Math.max(maxPathSum(root.left), maxPathSum(root.right));
-
-//   return root.val + maxChild;
-// };
-
-// Time: O(n)
-// Space: O(n)
-// iterative DFS
-// const maxPathSum = (root) => {
-//   if (root === null) return -Infinity;
-//   let max = -Infinity;
-//   let stack = [root];
-
-//   while (stack.length > 0) {
-//     let current = stack.pop();
-//     if (current > max) {
-//       max = current.val;
-//     }
-//     if (current.left > current.right) {
-//       stack.push(current.left);
-//     } else {
-//       stack.push(current.right);
-//     }
-//   }
-//   console.log(max);
-//   return max; // error
-// };
-// recursive DFS
-//
-// const maxPathSum = (root) => {
-//   if (root === null) return -Infinity;
-//   if (root.left === null && root.right === null) return root.val;
-//   let left = maxPathSum(root.left);
-//   let right = maxPathSum(root.right);
-//   return root.val + Math.max(left, right);
-// };
-//
 
 const a = new Node(3);
 const b = new Node(11);

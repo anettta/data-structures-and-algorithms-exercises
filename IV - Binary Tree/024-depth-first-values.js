@@ -11,23 +11,31 @@ class Node {
     this.right = null;
   }
 }
-
+//
+// recursive solution
+//
 const depthFirstValues = (root) => {
   if (root === null) return [];
+
   let left = depthFirstValues(root.left);
   let right = depthFirstValues(root.right);
-  return [root.val, ...left, ...right];
+  let values = [];
+  values.push(root.val, ...left, ...right);
+  return values;
 };
 
+// iterative solution
+//
 // const depthFirstValues = (root) => {
-//   if (root === null) return [];
+//   if (root === null) return null;
 //   let stack = [root];
 //   let values = [];
 //   while (stack.length > 0) {
 //     let current = stack.pop();
 //     values.push(current.val);
-//     if (current.left !== null) stack.push(current.left);
-//     if (current.right !== null) stack.push(current.right);
+
+//     if (current.right) stack.push(current.right);
+//     if (current.left) stack.push(current.left);
 //   }
 
 //   return values;

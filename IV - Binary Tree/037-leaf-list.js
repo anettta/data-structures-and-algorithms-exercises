@@ -11,100 +11,32 @@ class Node {
   }
 }
 
-const leafList = (root, leaves = []) => {
-  if (root === null) return;
+//
+// recursive
+//
+// const leafList = (root, leaves = []) => {
+//   if (root === null) return null;
+//   if (root.left === null && root.right === null) leaves.push(root.val);
+//   leafList(root.left, leaves);
+//   leafList(root.right, leaves);
+//   return leaves;
+// };
 
-  if (root.left === null && root.right === null) {
-    leaves.push(root.val);
+//
+// iterative
+//
+const leafList = (root) => {
+  let leaves = [];
+  let stack = [root];
+  while (stack.length > 0) {
+    let current = stack.pop();
+    if (current.left === null && current.right === null)
+      leaves.push(current.val);
+    if (current.right) stack.push(current.right);
+    if (current.left) stack.push(current.left);
   }
-  leafList(root.left, leaves);
-  leafList(root.right, leaves);
   return leaves;
 };
-
-// const leafList = (root) => {
-//   if (root === null) return [];
-//   let leaves = [];
-//   let stack = [root];
-//   while (stack.length > 0) {
-//     let current = stack.pop();
-//     if (current.left === null && current.right === null) {
-//       leaves.push(current.val);
-//     }
-//     if (current.left) stack.push(current.left);
-//     if (current.right) stack.push(current.right);
-//   }
-//   return leaves.reverse();
-// };
-
-// const leafList = (root, leaves = []) => {
-//   if (root === null) return;
-//   if (root.left === null && root.right === null) {
-//     leaves.push(root.val);
-//   }
-//   leafList(root.left, leaves);
-//   leafList(root.right, leaves);
-
-//   return leaves;
-// };
-
-// const leafList = (root, leaves = []) => {
-//   if (root === null) return;
-
-//   if (root.left === null && root.right === null) {
-//     leaves.push(root.val);
-//   }
-//   leafList(root.left, leaves);
-//   leafList(root.right, leaves);
-//   return leaves;
-// };
-
-// const leafList = (root) => {
-//   if (root === null) return [];
-//   const stack = [root];
-//   const leaves = [];
-//   while (stack.length > 0) {
-//     let current = stack.pop();
-//     if (current.left === null && current.right === null) {
-//       leaves.push(current.val);
-//     }
-//     if (current.right) stack.push(current.right);
-//     if (current.left) stack.push(current.left);
-//   }
-//   return leaves;
-// };
-
-// recursive
-// const leafList = (root) => {
-//   if (root === null) return [];
-//   const leaves = [];
-//   fillLeaves(root, leaves);
-//   return leaves;
-// };
-
-// const fillLeaves = (root, leaves) => {
-//   if (root === null) return;
-//   if (root.left === null && root.right === null) leaves.push(root.val);
-//   fillLeaves(root.left, leaves);
-//   fillLeaves(root.right, leaves);
-// };
-
-// iterative
-// const leafList = (root) => {
-//   if (root === null) return [];
-//   let leaves = [];
-//   let stack = [root];
-//   while (stack.length) {
-//     let current = stack.pop();
-
-//     if (current.left === null && current.right === null) {
-//       leaves.push(current.val);
-//     }
-//     if (current.right !== null) stack.push(current.right);
-//     if (current.left !== null) stack.push(current.left);
-//   }
-//   return leaves;
-// };
 
 const a = new Node("a");
 const b = new Node("b");
