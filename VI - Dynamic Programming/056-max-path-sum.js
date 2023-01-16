@@ -13,38 +13,13 @@
 const maxPathSum = (grid, r = 0, c = 0, memo = {}) => {
   let pos = r + "," + c;
   if (pos in memo) return memo[pos];
-  if (r === grid.length || c === grid[0].length) return -Infinity;
-  if (r === grid.length - 1 && c === grid[0].length - 1) return grid[r][c];
-  let rightSum = maxPathSum(grid, r + 1, c, memo);
-  let downSum = maxPathSum(grid, r, c + 1, memo);
-  memo[pos] = grid[r][c] + Math.max(rightSum, downSum);
+  if (r === grid.length || c === grid.length) return 0;
+  if (r === grid.length - 1 && c === grid.length - 1) return grid[r][c];
+  const downMaxSum = maxPathSum(grid, r + 1, c, memo);
+  const rightMaxSum = maxPathSum(grid, r, c + 1, memo);
+  memo[pos] = grid[r][c] + Math.max(downMaxSum, rightMaxSum);
   return memo[pos];
 };
-
-// const maxPathSum = (grid, r = 0, c = 0, memo = {}) => {
-//   if (r === grid.length || c === grid[0].length) return -Infinity;
-//   if (r === grid.length - 1 && c === grid[0].length - 1) return grid[r][c];
-//   let pos = r + "," + c;
-//   if (pos in memo) return memo[pos];
-//   let down = maxPathSum(grid, r + 1, c, memo);
-//   let right = maxPathSum(grid, r, c + 1, memo);
-
-//   max = grid[r][c] + Math.max(down, right);
-//   memo[pos] = max;
-//   return memo[pos];
-// };
-
-// const maxPathSum = (grid, r = 0, c = 0, memo = {}) => {
-//   const pos = r + "," + c;
-//   if (pos in memo) return memo[pos];
-//   if (r === grid.length || c === grid[0].length) return -Infinity;
-//   if (r === grid.length - 1 && c === grid[0].length - 1) return grid[r][c];
-
-//   const down = maxPathSum(grid, r + 1, c, memo);
-//   const right = maxPathSum(grid, r, c + 1, memo);
-//   memo[pos] = grid[r][c] + Math.max(down, right);
-//   return memo[pos];
-// };
 
 const grid = [
   [1, 3, 12],
