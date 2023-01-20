@@ -20,11 +20,11 @@ class Node {
 //   return head;
 // };
 
-const deleteNode = (head, value, prev = null) => {
+const deleteNode = (head, value) => {
   if (head === null) return null;
   if (head.val === value) return head.next;
 
-  head.next = deleteNode(head.next, value, head);
+  head.next = deleteNode(head.next, value);
   return head;
 };
 
