@@ -1,33 +1,45 @@
-// Write a function, shortestPath,
-// that takes in an array of edges
+// Write a function, shortestPath, that takes in an array of edges
 // for an undirected graph and two nodes (nodeA, nodeB).
 // The function should return the length
 // of the shortest path between A and B.
 // Consider the length as the number of edges in the path,
 // not the number of nodes.
 // If there is no path between A and B, then return -1.
+//
+// Time: O(e)  edges
+// Space: O(e)  edges
+//
+//
+//          a - c
+//          |   |
+//          b - d
+//          |
+//          f        h
+//
+//
+// sp(a,d) =>  2 (edges)
+// sp(a,h) => -1 (no path)
 
 const shortestPath = (edges, nodeA, nodeB) => {
   const graph = buildGraph(edges);
-  let visited = new Set([nodeA]);
-  let queue = [{ nodeA: nodeA, distance: 0 }];
-
+  const queue = [[nodeA, 0]];
+  const visited = new Set([nodeA]);
   while (queue.length > 0) {
-    let { nodeA, distance } = queue.shift();
-    if (nodeA === nodeB) return distance;
+    const [node, distance] = queue.shift();
+    if (node === nodeB) return distance;
 
-    for (let neighbor of graph[nodeA]) {
-      if (!visited.has(neighbor)) {
-        visited.add(neighbor);
-      }
-      queue.push({ nodeA: neighbor, distance: distance + 1 });
+    for (let neighbor of graph[node]) {
+      if (visited.has([neighbor])) return -1;
+      visited.add([neighbor]);
+      queue.push([neighbor, distance + 1]);
     }
   }
   return -1;
 };
 
 const buildGraph = (edges) => {
-  const graph = {};
+  let graph = {};
+
   for (let edge of edges) {
     const [a, b] = edge;
     if (!(a in graph)) graph[a] = [];
@@ -35,73 +47,9 @@ const buildGraph = (edges) => {
     graph[a].push(b);
     graph[b].push(a);
   }
+
   return graph;
 };
-
-// const shortestPath = (edges, nodeA, nodeB) => {
-//   const graph = buildGraph(edges);
-//   let visited = new Set([nodeA]);
-//   let queue = [[nodeA, 0]];
-
-//   while (queue.length > 0) {
-//     const [node, distance] = queue.shift();
-//     if (node === nodeB) return distance;
-
-//     for (let neighbor of graph[node]) {
-//       if (!visited.has(neighbor)) {
-//         visited.add(node);
-//       }
-//       queue.push([neighbor, distance + 1]);
-//     }
-//   }
-//   return -1;
-// };
-
-// const buildGraph = (edges) => {
-//   let graph = {};
-//   for (let edge of edges) {
-//     const [a, b] = edge;
-//     if (!(a in graph)) graph[a] = [];
-//     if (!(b in graph)) graph[b] = [];
-//     graph[a].push(b);
-//     graph[b].push(a);
-//   }
-//   return graph;
-// };
-
-// const shortestPath = (edges, nodeA, nodeB) => {
-//   const graph = buildGraph(edges);
-// breadth first traversal is better
-// explore all directions very evenly
-// queue
-//   let visited = new Set([nodeA]);
-//   let queue = [[nodeA, 0]];
-//   while (queue.length > 0) {
-//     const [node, distance] = queue.shift();
-//     if (node === nodeB) return distance;
-//     // graph[node] is an individual array within adjacency list
-//     for (let neighbor of graph[node]) {
-//       if (!visited.has(neighbor)) {
-//         visited.add(neighbor);
-//         queue.push([neighbor, distance + 1]);
-//       }
-//     }
-//   }
-//   return -1;
-// };
-
-// const buildGraph = (edges) => {
-//   let graph = {};
-//   for (let edge of edges) {
-//     // iterating through every edge
-//     let [a, b] = edge;
-//     if (!(a in graph)) graph[a] = []; // create for the first time
-//     if (!(b in graph)) graph[b] = [];
-//     graph[a].push(b);
-//     graph[b].push(a);
-//   }
-//   return graph;
-// };
 
 const edges = [
   ["w", "x"],
@@ -110,5 +58,5 @@ const edges = [
   ["z", "v"],
   ["w", "v"],
 ];
-
+// console.log(buildGraph(edges));
 console.log(shortestPath(edges, "w", "z")); // -> 2

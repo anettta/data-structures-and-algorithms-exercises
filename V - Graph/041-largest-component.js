@@ -2,18 +2,18 @@
 // The function should return the size of the largest connected component in the graph.
 
 const largestComponent = (graph) => {
+  let size = -Infinity;
   let visited = new Set();
-  let largest = 1;
   for (let node in graph) {
-    let size = explore(graph, node, visited);
-    if (size > largest) {
-      largest = size;
+    let currentSize = explore(graph, node, visited);
+    if (currentSize > size) {
+      size = currentSize;
     }
   }
-  return largest;
+  return size;
 };
 
-explore = (graph, current, visited) => {
+const explore = (graph, current, visited) => {
   if (visited.has(String(current))) return 0;
   visited.add(String(current));
 
@@ -23,51 +23,6 @@ explore = (graph, current, visited) => {
   }
   return size;
 };
-
-// const largestComponent = (graph) => {
-//   let largest = 0;
-//   let visited = new Set();
-//   for (let node in graph) {
-//     let size = explore(graph, node, visited);
-//     if (size > largest) largest = size;
-//   }
-//   return largest;
-// };
-
-// const explore = (graph, current, visited) => {
-//   if (visited.has(current)) return 0;
-//   visited.add(current);
-//   let size = 1;
-//   for (let neighbor of graph[current]) {
-//     size += explore(graph, neighbor, visited);
-//   }
-//   return size;
-// };
-
-// const largestComponent = (graph) => {
-//   let largest = 0;
-//   let visited = new Set();
-
-//   for (let node in graph) {
-//     // iterate through the keys
-//     const size = exploreSize(graph, node, visited);
-
-//     if (size > largest) {
-//       largest = size;
-//     }
-//   }
-//   return largest;
-// };
-// const exploreSize = (graph, node, visited) => {
-//   if (visited.has(node)) return 0;
-//   visited.add(node);
-//   let size = 1;
-
-//   for (let neighbor of graph[node]) {
-//     size += exploreSize(graph, neighbor, visited);
-//   }
-//   return size;
-// };
 
 console.log(
   largestComponent({

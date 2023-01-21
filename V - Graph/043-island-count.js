@@ -6,12 +6,15 @@
 // An island is a vertically or horizontally
 // connected region of land.
 
+// Time: O(rc)
+// Space: O(rc)
+
 const islandCount = (grid) => {
-  let visited = new Set();
   let count = 0;
+  const visited = new Set();
   for (let r = 0; r < grid.length; r++) {
     for (let c = 0; c < grid[0].length; c++) {
-      if (explore(grid, r, c, visited) === true) {
+      if (exploreDFS(grid, r, c, visited) === true) {
         count++;
       }
     }
@@ -19,89 +22,24 @@ const islandCount = (grid) => {
   return count;
 };
 
-const explore = (grid, r, c, visited) => {
-  const rowInBounds = 0 <= r && r < grid.length;
-  const colInBounds = 0 <= c && c < grid[0].length;
-
+const exploreDFS = (grid, r, c, visited) => {
+  let rowInBounds = r >= 0 && r < grid.length;
+  let colInBounds = c >= 0 && c < grid[0].length;
   if (!rowInBounds || !colInBounds) return false;
 
   if (grid[r][c] === "W") return false;
 
-  let pos = r + "," + c;
+  const pos = r + "," + c;
+  if (visited.has(String(pos))) return false;
+  visited.add(String(pos));
 
-  if (visited.has(pos)) return false;
-
-  visited.add(pos);
-
-  explore(grid, r - 1, c, visited);
-  explore(grid, r + 1, c, visited);
-  explore(grid, r, c - 1, visited);
-  explore(grid, r, c + 1, visited);
+  exploreDFS(grid, r - 1, c, visited);
+  exploreDFS(grid, r + 1, c, visited);
+  exploreDFS(grid, r, c - 1, visited);
+  exploreDFS(grid, r, c + 1, visited);
 
   return true;
 };
-
-// const islandCount = (grid) => {
-//   let visited = new Set();
-//   let count = 0;
-//   for (let r = 0; r < grid.length; r++) {
-//     for (let c = 0; c < grid[0].length; c++) {
-//       if (explore(grid, r, c, visited) === true) {
-//         count++;
-//       }
-//     }
-//   }
-//   return count;
-// };
-
-// const explore = (grid, r, c, visited) => {
-//   const rowInBounds = 0 <= r && r < grid.length;
-//   const colInBounds = 0 <= c && c < grid[0].length;
-
-//   if (!rowInBounds || !colInBounds) return false;
-//   if (grid[r][c] === "W") return false;
-
-//   let position = r + "," + c;
-//   if (visited.has(position)) return false;
-//   visited.add(position);
-
-//   explore(grid, r - 1, c, visited);
-//   explore(grid, r + 1, c, visited);
-//   explore(grid, r, c - 1, visited);
-//   explore(grid, r, c + 1, visited);
-//   return true;
-// };
-
-// const islandCount = (grid) => {
-//   // nested loops
-//   // depth first w/ visited
-//   const visited = new Set();
-//   let count = 0;
-//   for (let row = 0; row < grid.length; row++) {
-//     for (let column = 0; column < grid[0].length; column++) {
-//       if (explore(grid, row, column, visited) === true) {
-//         count++;
-//       }
-//     }
-//   }
-//   return count;
-// };
-
-// const explore = (grid, row, column, visited) => {
-//   const rowInBounds = 0 <= row && row < grid.length;
-//   const columnInBounds = 0 <= column && column < grid.length;
-//   if (!rowInBounds || !columnInBounds) return false;
-//   if (grid[row][column] === "W") return false;
-//   const pos = row + "," + column;
-//   if (visited.has(pos)) return false;
-//   visited.add(pos);
-
-//   explore(grid, row - 1, column, visited);
-//   explore(grid, row + 1, column, visited);
-//   explore(grid, row, column - 1, visited);
-//   explore(grid, row, column + 1, visited);
-//   return true;
-// };
 
 const grid = [
   ["W", "L", "W", "W", "W"],
