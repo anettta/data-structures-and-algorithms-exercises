@@ -1,19 +1,24 @@
+// 2r5{o}  => 2rooooo
+
 const decompressBraces = (str) => {
   let stack = [];
-
-  let numbers = "0123456789";
+  let numbers = "123456789";
 
   for (let char of str) {
     if (numbers.includes(char)) {
       stack.push(Number(char));
     } else if (char === "}") {
+      // subroutine
+
       let segment = "";
       while (typeof stack[stack.length - 1] !== "number") {
         let popped = stack.pop();
         segment = popped + segment;
       }
-      let number = stack.pop();
-      stack.push(repeat(segment, number));
+      let num = stack.pop();
+      for (let i = 0; i < num; i++) {
+        stack.push(segment);
+      }
     } else if (char !== "{") {
       stack.push(char);
     }
@@ -21,13 +26,36 @@ const decompressBraces = (str) => {
   return stack.join("");
 };
 
-const repeat = (str, num) => {
-  let result = "";
-  for (let i = 0; i < num; i++) {
-    result += str;
-  }
-  return result;
-};
+// const decompressBraces = (str) => {
+//   let stack = [];
+
+//   let numbers = "0123456789";
+
+//   for (let char of str) {
+//     if (numbers.includes(char)) {
+//       stack.push(Number(char));
+//     } else if (char === "}") {
+//       let segment = "";
+//       while (typeof stack[stack.length - 1] !== "number") {
+//         let popped = stack.pop();
+//         segment = popped + segment;
+//       }
+//       let number = stack.pop();
+//       stack.push(repeat(segment, number));
+//     } else if (char !== "{") {
+//       stack.push(char);
+//     }
+//   }
+//   return stack.join("");
+// };
+
+// const repeat = (str, num) => {
+//   let result = "";
+//   for (let i = 0; i < num; i++) {
+//     result += str;
+//   }
+//   return result;
+// };
 
 // const decompressBraces = (str) => {
 //   const numbers = "0123456789";

@@ -17,6 +17,8 @@ const befittingBrackets = (str) => {
       stack.push(brackets[char]);
     } else if (stack[stack.length - 1] === char && stack.length > 0) {
       stack.pop();
+    } else {
+      return false;
     }
   }
   return stack.length === 0;
