@@ -10,26 +10,29 @@
 // m = max num found in any group
 // Time: O(n*m)
 // Space: O(n*m)
-
+// 012345678910
 // 2t3t34h111w
-
-const uncompress = (str) => {
+//   i
+//   j
+const uncompress = (s) => {
   let i = 0;
   let j = 0;
   let nums = "0123456789";
   let result = [];
-  while (j < str.length) {
-    if (nums.includes(str[j])) {
-      j++;
+  while (j < s.length) {
+    if (nums.includes(s[j])) {
+      // i=2, j=2
+      j++; // j=t
     } else {
-      let num = Number(str.slice(i, j));
-      for (let i = 0; i < num; i++) {
-        result.push(str[j]);
+      let num = Number(s.slice(i, j)); // 2
+      for (let count = 0; count < num; count++) {
+        result.push(s[j]);
       }
-      j++;
-      i = j;
+      j++; //index 2
+      i = j; // index 2
     }
   }
+
   return result.join("");
 };
 

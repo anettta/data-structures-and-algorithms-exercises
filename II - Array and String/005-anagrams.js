@@ -10,7 +10,7 @@
 
 const anagrams = (str1, str2) => {
   let obj1 = {};
-  let obj2 = {};
+  // let obj2 = {};
   for (let char of str1) {
     if (char in obj1) {
       obj1[char]++;
@@ -18,19 +18,31 @@ const anagrams = (str1, str2) => {
       obj1[char] = 1;
     }
   }
-
   for (let char of str2) {
-    if (char in obj2) {
-      obj2[char]++;
+    if (char in obj1) {
+      obj1[char]--;
     } else {
-      obj2[char] = 1;
-    }
-  }
-  for (let keys in obj1) {
-    if (obj1[keys] !== obj2[keys]) {
       return false;
     }
   }
+  // for (let char of str2) {
+  //   if (char in obj2) {
+  //     obj2[char]++;
+  //   } else {
+  //     obj2[char] = 1;
+  //   }
+  // }
+
+  for (let keys in obj1) {
+    if (obj1[keys] !== 0) {
+      return false;
+    }
+  }
+  // for (let keys in obj1) {
+  //   if (obj1[keys] !== obj2[keys]) {
+  //     return false;
+  //   }
+  // }
   return true;
 };
 

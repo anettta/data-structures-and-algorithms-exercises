@@ -10,7 +10,7 @@ const intersection = (a, b) => {
   let set = new Set();
   let result = [];
 
-  for (num of b) {
+  for (let num of b) {
     if (!set.has(num)) {
       set.add(num);
     }

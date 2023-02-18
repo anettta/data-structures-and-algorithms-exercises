@@ -9,9 +9,10 @@
 // Space: O(n)
 // Strings in JS are immutable thus strings are copied over
 // using array instead
-
-// ccaayykkk
-
+// 012345678
+// ccaayykkk => 2c2a2y3k
+//   i
+//   j
 const compress = (str) => {
   let i = 0;
   let j = 0;
@@ -20,7 +21,7 @@ const compress = (str) => {
     if (str[i] === str[j]) {
       j++;
     } else {
-      let num = j - i;
+      let num = j - i; // 2
       if (num > 1) {
         result.push(num, str[i]);
       } else {
